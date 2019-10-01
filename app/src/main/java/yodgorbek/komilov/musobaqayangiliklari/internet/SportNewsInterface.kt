@@ -8,7 +8,7 @@ import retrofit2.http.GET
 interface SportNewsInterface {
 
     @GET("v2/top-headlines?country=us&apiKey=da331087e3f3462bb534b3b0917cbee9")
-    fun getNews() : Call <List<Article>>
+    fun getNews() : Call <SportNewsResponse>
 
     companion object {
 

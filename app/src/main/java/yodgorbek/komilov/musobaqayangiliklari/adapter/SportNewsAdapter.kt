@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
+import com.squareup.picasso.Picasso
+
 import yodgorbek.komilov.musobaqayangiliklari.R
 import yodgorbek.komilov.musobaqayangiliklari.internet.Article
+import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsResponse
 
 class SportNewsAdapter(val context: Context) : RecyclerView.Adapter<SportNewsAdapter.MyViewHolder>() {
 
@@ -29,13 +30,11 @@ class SportNewsAdapter(val context: Context) : RecyclerView.Adapter<SportNewsAda
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         holder.tvMovieName.text = articleList.get(position).title
-        Glide.with(context).load(articleList.get(position).urlToImage)
-            .apply(RequestOptions().centerCrop())
-            .into(holder.image)
+        Picasso.get().load(articleList.get(position).urlToImage).into(holder.image)
     }
 
-    fun setMovieListItems(movieList: List<Article>){
-        this.articleList = articleList;
+    fun setMovieListItems(articleList: List<Article>){
+        this.articleList = articleList
         notifyDataSetChanged()
     }
 
@@ -46,5 +45,3 @@ class SportNewsAdapter(val context: Context) : RecyclerView.Adapter<SportNewsAda
 
     }
 }
-
-

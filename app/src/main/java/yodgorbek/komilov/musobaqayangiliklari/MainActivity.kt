@@ -2,15 +2,15 @@
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import yodgorbek.komilov.musobaqayangiliklari.adapter.SportNewsAdapter
-import yodgorbek.komilov.musobaqayangiliklari.internet.Article
+
 import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsInterface
+import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsResponse
 
  class MainActivity : AppCompatActivity() {
 
@@ -30,15 +30,14 @@ import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsInterface
         val apiInterface = SportNewsInterface.create().getNews()
 
 
-        apiInterface.enqueue( object : Callback<List<Article>> {
-            override fun onResponse(call: Call<List<Article>>?, response: Response<List<Article>>?) {
-                Log.d("onSuccess", response.toString())
-                if(response?.body() != null)
-                    sportNewsAdapter.setMovieListItems(response.body()!!)
+        apiInterface.enqueue( object : Callback<SportNewsResponse> {
+            override fun onResponse(call: Call<SportNewsResponse>?, response: Response<SportNewsResponse>?) {
+
+                if (response?.body() != null)    sportNewsAdapter.setMovieListItems(response.body()!!.articles)
             }
 
-            override fun onFailure(call: Call<List<Article>>?, t: Throwable?) {
-                Log.d("onFailure", t!!.message)
+            override fun onFailure(call: Call <SportNewsResponse>?, t: Throwable?) {
+
             }
         })
     }
