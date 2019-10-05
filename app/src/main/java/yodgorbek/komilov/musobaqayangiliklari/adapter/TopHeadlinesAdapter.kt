@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
 import yodgorbek.komilov.musobaqayangiliklari.R
-import yodgorbek.komilov.musobaqayangiliklari.internet.Article
-import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsResponse
+import yodgorbek.komilov.musobaqayangiliklari.model.Article
 
-class SportNewsAdapter(val context: Context) : RecyclerView.Adapter<SportNewsAdapter.MyViewHolder>() {
+
+class TopHeadlinesAdapter(val context: Context) : RecyclerView.Adapter<TopHeadlinesAdapter.MyViewHolder>() {
 
     var articleList : List<Article> = listOf()
 

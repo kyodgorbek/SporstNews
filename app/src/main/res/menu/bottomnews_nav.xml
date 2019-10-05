@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+            android:id="@+id/top_headline"
+            android:src="@drawable/ic_mail"
+            android:title="@string/top_headlines"/>
+
+    <item
+        android:id="@+id/espn_news"
+        android:src="@drawable/ic_espn"
+        android:title="@string/espn"/>
+
+    <item
+        android:id="@+id/bbc_sport"
+        android:src="@drawable/ic_espn"
+        android:title="@string/bbc_sport"/>
+
+    <item
+        android:id="@+id/football_italia"
+        android:src="@drawable/ic_espn"
+        android:title="@string/football__italia"/>
+
+
+
+</menu>

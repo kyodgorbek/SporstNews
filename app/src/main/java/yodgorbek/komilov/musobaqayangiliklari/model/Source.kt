@@ -1,4 +1,4 @@
-package yodgorbek.komilov.musobaqayangiliklari.internet
+package yodgorbek.komilov.musobaqayangiliklari.model
 
 data class Source(
     val id: Any,
