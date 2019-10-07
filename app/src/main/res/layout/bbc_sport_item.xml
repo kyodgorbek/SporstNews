@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="85dp"
+            android:layout_marginStart="16dp"
+            android:contentDescription="bbc"
+            tools:background="@color/colorPrimary"
+            android:layout_marginLeft="16dp" />
+
+        <TextView
+            android:id="@+id/articleTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_toEndOf="@id/imageView"
+            android:ellipsize="end"
+            android:lines="3"
+            android:maxLines="3"
+            android:text="1\n2\n3\n"
+            android:layout_toRightOf="@id/imageView" />
+
+        <TextView
+            android:id="@+id/imageCategory"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_below="@id/articleTitle"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/imageView"
+            tools:background="@color/colorPrimary"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@id/imageView" />
+
+        <TextView
+            android:id="@+id/articleCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_below="@id/articleTitle"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/imageCategory"
+            android:gravity="center|start"
+            android:text="Onefootbal"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@id/imageCategory" />
+
+        <TextView
+            android:id="@+id/articleTime"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_below="@id/articleTitle"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_toEndOf="@id/articleCategory"
+            android:gravity="center|start"
+            android:text="- 1h"
+            android:textColor="@android:color/darker_gray"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/articleCategory" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

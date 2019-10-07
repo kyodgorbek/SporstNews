@@ -30,6 +30,7 @@ class TopHeadlinesAdapter(val context: Context) : RecyclerView.Adapter<TopHeadli
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         holder.tvMovieName.text = articleList.get(position).title
+        holder.tvMovieName.text = articleList.get(position).source.name
         Picasso.get().load(articleList.get(position).urlToImage).into(holder.image)
     }
 
