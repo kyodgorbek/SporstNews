@@ -1,23 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <TextView
-        android:id="@+id/title"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="85dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:contentDescription="bbc"
+            tools:background="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/articleTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_toEndOf="@id/imageView"
+            android:layout_toRightOf="@id/imageView"
+            android:ellipsize="end"
+            android:lines="3"
+            android:maxLines="3"
+            android:text="1\n2\n3\n" />
+
+        <ImageView
+            android:id="@+id/imageCategory"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_below="@id/articleTitle"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_toEndOf="@id/imageView"
+            android:layout_toRightOf="@id/imageView"
+            android:src="@drawable/ic_espn"
+            tools:background="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/articleSourceName"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_below="@id/articleTitle"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_toEndOf="@id/imageCategory"
+            android:layout_toRightOf="@id/imageCategory"
+            android:gravity="center|start"
+            android:text="Onefootbal" />
+
+        <TextView
+            android:id="@+id/articleTime"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_below="@id/articleTitle"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_toEndOf="@id/articleSourceName"
+            android:layout_toRightOf="@id/articleSourceName"
+            android:gravity="center|start"
+            android:text="- 1h"
+            android:textColor="@android:color/darker_gray"
+            tools:ignore="NotSibling" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

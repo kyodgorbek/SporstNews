@@ -15,9 +15,9 @@
             android:layout_width="100dp"
             android:layout_height="85dp"
             android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
             android:contentDescription="bbc"
-            tools:background="@color/colorPrimary"
-            android:layout_marginLeft="16dp" />
+            tools:background="@color/colorPrimary" />
 
         <TextView
             android:id="@+id/articleTitle"
@@ -26,11 +26,11 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_toEndOf="@id/imageView"
+            android:layout_toRightOf="@id/imageView"
             android:ellipsize="end"
             android:lines="3"
             android:maxLines="3"
-            android:text="1\n2\n3\n"
-            android:layout_toRightOf="@id/imageView" />
+            android:text="1\n2\n3\n" />
 
         <TextView
             android:id="@+id/imageCategory"
@@ -38,10 +38,10 @@
             android:layout_height="32dp"
             android:layout_below="@id/articleTitle"
             android:layout_marginStart="16dp"
-            android:layout_toEndOf="@id/imageView"
-            tools:background="@color/colorPrimary"
             android:layout_marginLeft="16dp"
-            android:layout_toRightOf="@id/imageView" />
+            android:layout_toEndOf="@id/imageView"
+            android:layout_toRightOf="@id/imageView"
+            tools:background="@color/colorPrimary" />
 
         <TextView
             android:id="@+id/articleCategory"
@@ -49,11 +49,11 @@
             android:layout_height="32dp"
             android:layout_below="@id/articleTitle"
             android:layout_marginStart="16dp"
-            android:layout_toEndOf="@id/imageCategory"
-            android:gravity="center|start"
-            android:text="Onefootbal"
             android:layout_marginLeft="16dp"
-            android:layout_toRightOf="@id/imageCategory" />
+            android:layout_toEndOf="@id/imageCategory"
+            android:layout_toRightOf="@id/imageCategory"
+            android:gravity="center|start"
+            android:text="Onefootbal" />
 
         <TextView
             android:id="@+id/articleTime"
@@ -61,14 +61,14 @@
             android:layout_height="32dp"
             android:layout_below="@id/articleTitle"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_toEndOf="@id/articleCategory"
+            android:layout_toRightOf="@id/articleCategory"
             android:gravity="center|start"
             android:text="- 1h"
-            android:textColor="@android:color/darker_gray"
-            android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/articleCategory" />
+            android:textColor="@android:color/darker_gray" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

@@ -18,10 +18,14 @@ class FootballItaliaFragment : Fragment() {
     }
 
     //3
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_football_italia, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+      val view =  return inflater.inflate(R.layout.fragment_football_italia, container, false)
+
+     return view
     }
 
 }

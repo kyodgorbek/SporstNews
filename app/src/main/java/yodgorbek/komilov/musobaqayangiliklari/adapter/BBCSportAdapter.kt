@@ -13,11 +13,12 @@ import yodgorbek.komilov.musobaqayangiliklari.model.Article
 
 class BBCSportAdapter(val context: Context) : RecyclerView.Adapter<BBCSportAdapter.MyViewHolder>() {
 
-    var articleList : List<Article> = listOf()
+    var articleList: List<Article> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.bbc_sport_list,parent,false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.bbc_sport_list, parent, false)
         return MyViewHolder(view)
     }
 
@@ -31,7 +32,7 @@ class BBCSportAdapter(val context: Context) : RecyclerView.Adapter<BBCSportAdapt
         Picasso.get().load(articleList.get(position).urlToImage).into(holder.image)
     }
 
-    fun setMovieListItems(articleList: List<Article>){
+    fun setMovieListItems(articleList: List<Article>) {
         this.articleList = articleList
         notifyDataSetChanged()
     }

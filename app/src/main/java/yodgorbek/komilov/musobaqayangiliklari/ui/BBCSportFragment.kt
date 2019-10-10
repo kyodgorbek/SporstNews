@@ -12,17 +12,17 @@ import yodgorbek.komilov.musobaqayangiliklari.R
 class BBCSportFragment : Fragment() {
 
 
-    companion object {
-
-        fun newInstance(): BBCSportFragment {
-            return BBCSportFragment()
-        }
-    }
 
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+
+
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.fragment_sport_bbc, container, false)
 
         return view

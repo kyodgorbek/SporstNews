@@ -10,18 +10,13 @@ import yodgorbek.komilov.musobaqayangiliklari.R
 class DetailFragment : Fragment() {
 
 
-    companion object {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_detail, container, false)
 
-        fun newInstance(): DetailFragment {
-            return DetailFragment()
-        }
-    }
-
-
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_detail, container, false)
+        return view
     }
 
 }

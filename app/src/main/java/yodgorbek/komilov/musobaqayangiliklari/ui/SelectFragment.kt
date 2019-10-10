@@ -10,18 +10,15 @@ import yodgorbek.komilov.musobaqayangiliklari.R
 class SelectedFragment : Fragment() {
 
     //2
-    companion object {
 
-        fun newInstance(): SelectedFragment {
-            return SelectedFragment()
-        }
-    }
 
     //3
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.selected_fragment, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+    val view =     return inflater.inflate(R.layout.selected_fragment, container, false)
     }
 
 }

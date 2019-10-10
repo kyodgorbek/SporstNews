@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">Sport News</string>
     <string name="top_headlines">Top Headlines</string>
     <string name="espn">ESPN</string>
