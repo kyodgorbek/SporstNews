@@ -19,20 +19,22 @@ import yodgorbek.komilov.musobaqayangiliklari.ui.TopHeadlinesFragment
 
 class MainActivity : AppCompatActivity() {
 
-
-
+    var selectedFragment = Fragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-       val  bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom)
+        val  bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom)
 
+        selectedFragment = TopHeadlinesFragment()
 
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.frame_layout, selectedFragment)
+        transaction.commit()
 
         bottomNavigationView.setOnNavigationItemSelectedListener {
 
-            var selectedFragment = Fragment()
             when (it.itemId) {
                 R.id.top_headline -> selectedFragment = TopHeadlinesFragment()
 
