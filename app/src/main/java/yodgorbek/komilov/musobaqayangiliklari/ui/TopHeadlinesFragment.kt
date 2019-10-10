@@ -34,6 +34,8 @@ class TopHeadlinesFragment : Fragment() {
         )
 
        val recyclerView = view.findViewById (R.id.recyclerView) as RecyclerView
+        topHeadlinesAdapter = TopHeadlinesAdapter(recyclerView.context)
+
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = topHeadlinesAdapter
 
@@ -47,9 +49,10 @@ class TopHeadlinesFragment : Fragment() {
                 response: Response<SportNewsResponse>?
             ) {
 
-                if (response?.body() != null) topHeadlinesAdapter?.setMovieListItems(response?.body()!!.articles)
-               topHeadlinesAdapter?.notifyDataSetChanged()
-             }
+                if (response!!.body() != null) {
+                    topHeadlinesAdapter!!.setMovieListItems(response.body()!!.articles)
+                }
+            }
 
             override fun onFailure(call: Call<SportNewsResponse>?, t: Throwable?) {
 
@@ -58,7 +61,6 @@ class TopHeadlinesFragment : Fragment() {
         return view
 
     }
-
 
 
 }
