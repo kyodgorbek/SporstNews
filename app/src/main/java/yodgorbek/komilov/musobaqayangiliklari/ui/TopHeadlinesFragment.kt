@@ -47,8 +47,9 @@ class TopHeadlinesFragment : Fragment() {
                 response: Response<SportNewsResponse>?
             ) {
 
-                if (response!!.body() != null) topHeadlinesAdapter!!.setMovieListItems(response.body()!!.articles)
-            }
+                if (response?.body() != null) topHeadlinesAdapter?.setMovieListItems(response?.body()!!.articles)
+               topHeadlinesAdapter?.notifyDataSetChanged()
+             }
 
             override fun onFailure(call: Call<SportNewsResponse>?, t: Throwable?) {
 
