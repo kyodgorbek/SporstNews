@@ -98,14 +98,7 @@ class BBCSportAdapter(private val context: Context, private val listViewType: Li
     }
 
 
-//
-//
-//
-//
-//
-//                }
-//            }
-//        }
+
 
         fun setMovieListItems(articleList: List<Article>) {
             this.articleList = articleList
