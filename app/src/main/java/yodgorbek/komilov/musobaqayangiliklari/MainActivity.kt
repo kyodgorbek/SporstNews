@@ -3,15 +3,9 @@ package yodgorbek.komilov.musobaqayangiliklari
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import yodgorbek.komilov.musobaqayangiliklari.adapter.TopHeadlinesAdapter
-import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsInterface
-import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsResponse
+
 import yodgorbek.komilov.musobaqayangiliklari.ui.BBCSportFragment
 import yodgorbek.komilov.musobaqayangiliklari.ui.ESPNFragment
 import yodgorbek.komilov.musobaqayangiliklari.ui.FootballItaliaFragment
@@ -32,6 +26,23 @@ class MainActivity : AppCompatActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.frame_layout, selectedFragment)
         transaction.commit()
+
+        selectedFragment = BBCSportFragment()
+
+        val bbcTransaction = supportFragmentManager.beginTransaction()
+        bbcTransaction.replace(R.id.frame_layout, selectedFragment)
+        bbcTransaction.commit()
+
+        selectedFragment = ESPNFragment()
+
+        val espnTransaction = supportFragmentManager.beginTransaction()
+        espnTransaction.replace(R.id.frame_layout, selectedFragment)
+        espnTransaction.commit()
+
+        selectedFragment = FootballItaliaFragment()
+        val footballItaliaTransaction = supportFragmentManager.beginTransaction()
+        footballItaliaTransaction.replace(R.id.frame_layout, selectedFragment)
+        footballItaliaTransaction.commit()
 
         bottomNavigationView.setOnNavigationItemSelectedListener {
 
