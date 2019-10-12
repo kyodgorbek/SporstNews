@@ -33,10 +33,8 @@ class BBCSportFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_sport_bbc, container, false)
 
-
-
         val recyclerView = view.findViewById (R.id.recyclerView) as RecyclerView
-        bbcSportAdapter = BBCSportAdapter(recyclerView.context, listViewType)
+        bbcSportAdapter = BBCSportAdapter(recyclerView.context)
 
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = bbcSportAdapter

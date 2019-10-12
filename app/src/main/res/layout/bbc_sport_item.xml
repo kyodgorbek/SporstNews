@@ -1,76 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
+        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp">
+        android:layout_margin="16dp"
+        android:background="@android:color/darker_gray"
+        android:elevation="4dp">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="100dp"
-            android:layout_height="85dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:contentDescription="bbc"
-            tools:background="@color/colorPrimary" />
-
-        <TextView
-            android:id="@+id/articleTitle"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/innerRoot"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_toEndOf="@id/imageView"
-            android:layout_toRightOf="@id/imageView"
-            android:ellipsize="end"
-            android:lines="3"
-            android:maxLines="3"
-            android:text="1\n2\n3\n" />
+            android:background="@android:color/white">
 
-        <ImageView
-            android:id="@+id/imageCategory"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_below="@id/articleTitle"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_toEndOf="@id/imageView"
-            android:layout_toRightOf="@id/imageView"
-            android:src="@drawable/ic_espn"
-            tools:background="@color/colorPrimary" />
+            <ImageView
+                android:id="@+id/topFlameImageView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="Header title"
+                android:padding="8dp"
+                android:tint="@android:color/holo_red_light"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/articleSourceName"
-            android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:layout_below="@id/articleTitle"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_toEndOf="@id/imageCategory"
-            android:layout_toRightOf="@id/imageCategory"
-            android:gravity="center|start"
-            android:text="Onefootbal" />
+            <TextView
+                android:id="@+id/topTitleTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Top News"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/topFlameImageView"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/articleTime"
-            android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:layout_below="@id/articleTitle"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_toEndOf="@id/articleSourceName"
-            android:layout_toRightOf="@id/articleSourceName"
-            android:gravity="center|start"
-            android:text="- 1h"
-            android:textColor="@android:color/darker_gray"
-            tools:ignore="NotSibling" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/bottomTitleTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Editor on duty: Dan"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintBottom_toBottomOf="@id/topFlameImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/topFlameImageView"
+                app:layout_constraintTop_toBottomOf="@id/topTitleTextView" />
 
-</androidx.cardview.widget.CardView>
+            <ImageView
+                android:id="@+id/bigImage"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@android:color/holo_blue_dark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/topFlameImageView" />
+
+            <ImageView
+                android:id="@+id/titleImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:contentDescription="Title"
+                android:padding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bigImage" />
+
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Real Madrid provide Toni Kroos injury update"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/titleImageView"
+                app:layout_constraintTop_toTopOf="@id/titleImageView" />
+
+            <ImageView
+                android:id="@+id/userAvatarImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:contentDescription="Title"
+                android:padding="8dp"
+                android:src="@drawable/ic_espn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+
+            <TextView
+                android:id="@+id/userNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Onefootball"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/userAvatarImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/userAvatarImageView"
+                app:layout_constraintTop_toTopOf="@id/userAvatarImageView" />
+
+            <TextView
+                android:id="@+id/timestampTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="- 17m"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/userNameTextView"
+                app:layout_constraintStart_toEndOf="@+id/userNameTextView" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="100dp"
+                android:layout_height="85dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:contentDescription="bbc"
+                tools:background="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/articleTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_toEndOf="@id/imageView"
+                android:layout_toRightOf="@id/imageView"
+                android:ellipsize="end"
+                android:lines="3"
+                android:maxLines="3"
+                android:text="1\n2\n3\n" />
+
+            <ImageView
+                android:id="@+id/imageCategory"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_below="@id/articleTitle"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_toEndOf="@id/imageView"
+                android:layout_toRightOf="@id/imageView"
+                android:src="@drawable/ic_espn"
+                tools:background="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/articleSourceName"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_below="@id/articleTitle"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_toEndOf="@id/imageCategory"
+                android:layout_toRightOf="@id/imageCategory"
+                android:gravity="center|start"
+                android:text="Onefootbal" />
+
+            <TextView
+                android:id="@+id/articleTime"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_below="@id/articleTitle"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_toEndOf="@id/articleSourceName"
+                android:layout_toRightOf="@id/articleSourceName"
+                android:gravity="center|start"
+                android:text="- 1h"
+                android:textColor="@android:color/darker_gray"
+                tools:ignore="NotSibling" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</FrameLayout>
