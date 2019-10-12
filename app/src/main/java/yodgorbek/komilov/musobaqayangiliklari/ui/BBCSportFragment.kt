@@ -42,7 +42,7 @@ class BBCSportFragment : Fragment() {
 
         val apiInterface = SportNewsInterface.create().getBBCSport()
 
-
+// Getting interface
         apiInterface.enqueue(object : Callback<SportNewsResponse> {
             override fun onResponse(
                 call: Call<SportNewsResponse>?,
