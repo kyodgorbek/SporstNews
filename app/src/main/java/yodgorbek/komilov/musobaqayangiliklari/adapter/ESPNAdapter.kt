@@ -23,8 +23,7 @@ class ESPNAdapter(val context: Context) : RecyclerView.Adapter<ESPNAdapter.MyVie
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.espn_list, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.espn_list, parent, false)
         return MyViewHolder(view)
     }
 

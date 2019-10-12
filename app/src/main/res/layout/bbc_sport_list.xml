@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card"
     android:layout_width="match_parent"
@@ -17,8 +17,8 @@
 
         <ImageView
             android:id="@+id/topFlameImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:contentDescription="Header title"
             android:padding="8dp"
             android:tint="@android:color/holo_red_light"
@@ -27,7 +27,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             android:id="@+id/topTitleTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             app:layout_constraintStart_toEndOf="@id/topFlameImageView"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             android:id="@+id/bottomTitleTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -64,13 +64,12 @@
             android:layout_marginTop="8dp"
             android:contentDescription="Title"
             android:padding="8dp"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/bigImage" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             android:id="@+id/titleTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -94,7 +93,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/titleTextView" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             android:id="@+id/userNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -105,10 +104,10 @@
             app:layout_constraintBottom_toBottomOf="@id/userAvatarImageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@id/titleImageView"
+            app:layout_constraintStart_toEndOf="@+id/userAvatarImageView"
             app:layout_constraintTop_toTopOf="@id/userAvatarImageView" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <TextView
             android:id="@+id/timestampTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -117,10 +116,8 @@
             android:text="- 17m"
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp"
-            app:layout_constraintBaseline_toBaselineOf="@id/userNameTextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@id/userNameTextView" />
+            app:layout_constraintBottom_toBottomOf="@+id/userNameTextView"
+            app:layout_constraintStart_toEndOf="@+id/userNameTextView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>
