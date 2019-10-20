@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:fitsSystemWindows="true"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
     <androidx.constraintlayout.widget.ConstraintLayout
+
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:fitsSystemWindows="true"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -16,66 +13,14 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="56dp"
-            app:layout_constraintBottom_toTopOf="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <com.github.florent37.shapeofview.shapes.DiagonalView
-            android:id="@+id/diagonalView"
-            android:layout_width="150dp"
-            android:layout_height="0dp"
-            android:elevation="4dp"
-            app:layout_constraintBottom_toTopOf="@+id/imageView2"
-            app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shape_diagonal_angle="10"
-            app:shape_diagonal_direction="right"
-            app:shape_diagonal_position="bottom"
-            tools:targetApi="lollipop">
-
-
-        </com.github.florent37.shapeofview.shapes.DiagonalView>
-
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="187dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="9dp"
-            android:layout_marginRight="9dp"
-            android:layout_marginBottom="606dp"
-            android:paddingRight="100dp"
-            android:src="@drawable/ic_mail"
-            app:layout_constraintBottom_toBottomOf="parent"
-
-            app:layout_constraintEnd_toStartOf="@+id/textView"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingRight="100dp"
-            android:text="ArticleTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toTopOf="@+id/imageView2" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingLeft="100dp"
-            android:paddingRight="164dp"
-            android:text="teextlar"
-            app:layout_constraintBottom_toBottomOf="@+id/textView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
+        <WebView
+            android:id="@+id/article"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>

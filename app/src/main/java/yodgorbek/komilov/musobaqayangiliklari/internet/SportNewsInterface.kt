@@ -1,9 +1,12 @@
 package yodgorbek.komilov.musobaqayangiliklari.internet
 
 
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import kotlinx.coroutines.Deferred
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -21,7 +24,7 @@ interface SportNewsInterface {
     fun getFootballItalia(): Call<SportNewsResponse>
 
     @GET("/v2/top-headlines?sources=bbc-sport&apiKey=da331087e3f3462bb534b3b0917cbee9")
-    fun getBBCSport(): Call<SportNewsResponse>
+    fun getBBCSport(): Deferred<Response<SportNewsResponse>>
 
     companion object {
 
@@ -41,6 +44,7 @@ interface SportNewsInterface {
 
             val retrofit = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .baseUrl(BASE_URL)
                 .client(client)
                 .build()

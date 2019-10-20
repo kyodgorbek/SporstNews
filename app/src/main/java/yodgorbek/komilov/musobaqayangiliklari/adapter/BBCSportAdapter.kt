@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.bbc_sport_item.view.*
 
-import yodgorbek.komilov.musobaqayangiliklari.R
+
 
 import yodgorbek.komilov.musobaqayangiliklari.model.Article
 import java.text.ParseException
@@ -22,10 +22,25 @@ import java.time.Duration
 import java.time.LocalDateTime
 import java.util.*
 
+import android.content.Intent
+import yodgorbek.komilov.musobaqayangiliklari.R
+
+import yodgorbek.komilov.musobaqayangiliklari.ui.detail.DetailActivity
+
+
+
+
+
+
+
 
 @Suppress("UNREACHABLE_CODE")
 class BBCSportAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var articleList: List<Article> = listOf()
+    companion object {
+        const val urlKey = "urlKey"
+
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -63,7 +78,7 @@ class BBCSportAdapter(private val context: Context) : RecyclerView.Adapter<Recyc
                             fallback.timeZone = TimeZone.getTimeZone("UTC")
                             d = fallback.parse(articleList[5].publishedAt)
                         } catch (e2: ParseException) {
-                            // TODO handle error
+
                             val formatted = output.format(d)
                             val timelinePoint = LocalDateTime.parse(formatted)
                             val now = LocalDateTime.now()
@@ -75,12 +90,21 @@ class BBCSportAdapter(private val context: Context) : RecyclerView.Adapter<Recyc
                             elapsedTime.toMinutes()
 
                             articleTime.text = "${elapsedTime.toMinutes()}"
+
+
+                            }
                         }
                     }
                 }
             }
+        holder.itemView.setOnClickListener { v->
+            val intent = Intent(v.context, DetailActivity::class.java)
+            intent.putExtra("urlKey", articleList[position].url)
+
+            v.context.startActivity(intent)
         }
     }
+
     override fun getItemCount(): Int {
         return articleList.size
     }
