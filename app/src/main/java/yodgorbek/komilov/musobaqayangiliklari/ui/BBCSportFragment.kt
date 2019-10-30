@@ -34,7 +34,7 @@ class BBCSportFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_sport_bbc, container, false)
 
-        val recyclerView = view.findViewById(R.id.recyclerView) as RecyclerView
+        val recyclerView = view.findViewById(R.id.recycler_View) as RecyclerView
         val pb = view.findViewById(R.id.pb) as ProgressBar
 
         GlobalScope.launch(Dispatchers.Main) {
@@ -52,7 +52,7 @@ class BBCSportFragment : Fragment() {
             }
 
         }
-    return view
+            return view
     }
 }
 

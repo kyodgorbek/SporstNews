@@ -28,15 +28,15 @@ class DetailActivity : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
 
         setSupportActionBar(toolbar)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.setDisplayShowHomeEnabled(true)
-        toolbar!!.setNavigationIcon(R.drawable.ic_arrow_white)
-        val url = intent.extras!!.getString("urlKey")
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        toolbar?.setNavigationIcon(R.drawable.ic_arrow_white)
+        val url = intent.extras?.getString("urlKey")
 
 
-        webView!!.webViewClient = WebViewClient()
+        webView?.webViewClient = WebViewClient()
 
-        webView!!.loadUrl(url)
+        webView?.loadUrl(url)
 
 
     }
