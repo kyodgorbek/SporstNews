@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -18,11 +19,13 @@ import kotlinx.coroutines.launch
 import yodgorbek.komilov.musobaqayangiliklari.R
 import yodgorbek.komilov.musobaqayangiliklari.adapter.BBCSportAdapter
 import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsInterface
+import yodgorbek.komilov.musobaqayangiliklari.viewmodel.BBCSportViewModel
+import yodgorbek.komilov.musobaqayangiliklari.viewmodel.FootballItaliaViewModel
 
 
 class BBCSportFragment : Fragment() {
 
-
+    private lateinit var viewModel: BBCSportViewModel
 
     var bbcSportAdapter: BBCSportAdapter? = null
 
@@ -33,25 +36,25 @@ class BBCSportFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_sport_bbc, container, false)
-
+        viewModel = ViewModelProviders.of(this).get(BBCSportViewModel::class.java)
         val recyclerView = view.findViewById(R.id.recycler_View) as RecyclerView
         val pb = view.findViewById(R.id.pb) as ProgressBar
 
-        GlobalScope.launch(Dispatchers.Main) {
-            val request = SportNewsInterface.create().getBBCSport()
-            val response = request.await()
-
-            pb.visibility = View.GONE
-            response.body()?.let {
-                bbcSportAdapter = BBCSportAdapter(recyclerView.context)
-
-                recyclerView.layoutManager = LinearLayoutManager(context)
-                recyclerView.adapter = bbcSportAdapter
-
-                bbcSportAdapter!!.setMovieListItems(response.body()!!.articles)
-            }
-
-        }
+//        GlobalScope.launch(Dispatchers.Main) {
+//            val request = SportNewsInterface.
+//            val response = request.await()
+//
+//            pb.visibility = View.GONE
+//            response.body()?.let {
+//                bbcSportAdapter = BBCSportAdapter(recyclerView.context)
+//
+//                recyclerView.layoutManager = LinearLayoutManager(context)
+//                recyclerView.adapter = bbcSportAdapter
+//
+//                bbcSportAdapter!!.setMovieListItems(response.body()!!.articles)
+//            }
+//
+//        }
             return view
     }
 }

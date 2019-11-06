@@ -1,9 +1,7 @@
 package yodgorbek.komilov.musobaqayangiliklari
 
-
-
 import android.view.View
-
+import androidx.test.espresso.matcher.ViewMatchers.withId
 import com.agoda.kakao.image.KImageView
 import com.agoda.kakao.recycler.KRecyclerItem
 import com.agoda.kakao.recycler.KRecyclerView
@@ -11,18 +9,14 @@ import com.agoda.kakao.screen.Screen
 import com.agoda.kakao.text.KTextView
 import org.hamcrest.Matcher
 
+open class TestRecyclerScreen : Screen<TestRecyclerScreen>() {
+    val recycler: KRecyclerView = KRecyclerView({
+        withId(R.id.recycler_View)
+    }, itemTypeBuilder = {
+        itemType(::Item)
+    })
 
-class ScreenA : Screen<ScreenA>() {
-
-    val recycler by lazy {
-        KRecyclerView({
-            this.withId(R.id.recycler_View)
-        }, {
-            itemType(::ViewHolder)
-        })
-    }
-
-    class ViewHolder(parent: Matcher<View>) : KRecyclerItem<ViewHolder>(parent) {
+    class Item(parent: Matcher<View>) : KRecyclerItem<Item>(parent) {
         val topFlameImageView = KImageView(parent) { withId(R.id.topFlameImageView) }
         val topTitleTextView = KTextView(parent) { withId(R.id.topTitleTextView) }
         val bottomTitleTextView = KTextView(parent) { withId(R.id.bottomTitleTextView) }
@@ -38,10 +32,4 @@ class ScreenA : Screen<ScreenA>() {
         val articleSourceName = KTextView(parent) { withId(R.id.articleSourceName) }
         val articleTime = KTextView(parent) { withId(R.id.articleTime) }
     }
-
-//    Screen.onScreen<ScreenA>
-//    recycler.firstChild<ScreenA.ViewHolder>
-//    {
-//        topTitleTextView.click()
-//    }
 }

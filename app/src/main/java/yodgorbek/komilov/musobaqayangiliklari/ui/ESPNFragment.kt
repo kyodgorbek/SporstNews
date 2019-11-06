@@ -36,21 +36,21 @@ class ESPNFragment : Fragment() {
         val recyclerView = view.findViewById(R.id.recyclerView) as RecyclerView
         val pb = view.findViewById(R.id.pb) as ProgressBar
 
-        GlobalScope.launch(Dispatchers.Main) {
-            val request = SportNewsInterface.create().getEspn()
-            val response = request.await()
-
-            pb.visibility = View.GONE
-            response.body()?.let {
-                espnAdapter = ESPNAdapter(recyclerView.context)
-
-                recyclerView.layoutManager = LinearLayoutManager(context)
-                recyclerView.adapter = espnAdapter
-
-                espnAdapter!!.setMovieListItems(response.body()!!.articles)
-            }
-
-        }
+//        GlobalScope.launch(Dispatchers.Main) {
+//            val request = SportNewsInterface.create().getEspn()
+//            val response = request.await()
+//
+//            pb.visibility = View.GONE
+//            response.body()?.let {
+//                espnAdapter = ESPNAdapter(recyclerView.context)
+//
+//                recyclerView.layoutManager = LinearLayoutManager(context)
+//                recyclerView.adapter = espnAdapter
+//
+//                espnAdapter!!.setMovieListItems(response.body()!!.articles)
+//            }
+//
+//        }
         return view
     }
 
