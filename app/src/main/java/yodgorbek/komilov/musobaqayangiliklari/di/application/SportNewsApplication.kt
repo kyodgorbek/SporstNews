@@ -7,7 +7,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import yodgorbek.komilov.musobaqayangiliklari.di.application.module.appModules
 
-class SportNewsApplication: Application() {
+class SportNewsApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()

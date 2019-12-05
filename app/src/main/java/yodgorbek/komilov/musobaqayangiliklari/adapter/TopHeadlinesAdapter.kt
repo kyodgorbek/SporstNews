@@ -3,6 +3,7 @@ package yodgorbek.komilov.musobaqayangiliklari.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,14 +18,19 @@ import java.text.SimpleDateFormat
 import java.time.Duration
 import java.time.LocalDateTime
 import java.util.*
+import kotlin.properties.Delegates
 
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class TopHeadlinesAdapter(val context: Context) :
     RecyclerView.Adapter<TopHeadlinesAdapter.MyViewHolder>() {
 
-    var articleList: List<Article> = listOf()
 
+
+    private var articleList: List<Article> by Delegates.observable(emptyList()) { _, _, _ ->
+
+        notifyDataSetChanged()
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
         val view = LayoutInflater.from(parent.context).inflate(R.layout.news_list, parent, false)
@@ -71,16 +77,14 @@ class TopHeadlinesAdapter(val context: Context) :
 
     }
 
-    fun setMovieListItems(articleList: List<Article>) {
-        this.articleList = articleList
-        notifyDataSetChanged()
+    fun updateData(newList: List<Article>) {
+         articleList = newList
+        Log.e("articleListSize",articleList?.size.toString())
+
     }
 
-    @SuppressLint("NewApi")
-    fun example() {
-    }
 
-    class MyViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
+    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView!!) {
 
         val image: ImageView = itemView!!.findViewById(R.id.imageView)
         val articleTitle: TextView = itemView!!.findViewById(R.id.articleTitle)
@@ -90,3 +94,5 @@ class TopHeadlinesAdapter(val context: Context) :
 
     }
 }
+
+

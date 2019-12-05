@@ -1,29 +1,17 @@
 package yodgorbek.komilov.musobaqayangiliklari
 
 
-
-
-
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
-
 import androidx.test.espresso.intent.rule.IntentsTestRule
-
 import androidx.test.espresso.matcher.ViewMatchers.withId
-
 import androidx.test.ext.junit.runners.AndroidJUnit4
-
-
-
-import org.junit.Rule
-import org.junit.runner.RunWith
-
-
-import yodgorbek.komilov.musobaqayangiliklari.ui.detail.DetailActivity
 import com.android21buttons.fragmenttestrule.FragmentTestRule
+import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
 import yodgorbek.komilov.musobaqayangiliklari.ui.BBCSportFragment
-
+import yodgorbek.komilov.musobaqayangiliklari.ui.detail.DetailActivity
 
 
 @RunWith(AndroidJUnit4::class)

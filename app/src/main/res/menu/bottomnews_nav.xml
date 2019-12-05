@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/top_headline"
         android:icon="@drawable/ic_mail"
-        android:title="@string/top_headlines"
-         />
+        android:title="@string/top_headlines" />
 
     <item
         android:id="@+id/espn_news"

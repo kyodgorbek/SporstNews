@@ -17,14 +17,16 @@ import java.time.Duration
 import java.time.LocalDateTime
 import java.util.*
 
-class FootballItaliaAdapter(val context: Context) : RecyclerView.Adapter<FootballItaliaAdapter.MyViewHolder>() {
+class FootballItaliaAdapter(val context: Context) :
+    RecyclerView.Adapter<FootballItaliaAdapter.MyViewHolder>() {
 
     var articleList: List<Article> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.football_italia_list, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.football_italia_list, parent, false)
         return MyViewHolder(view)
     }
 

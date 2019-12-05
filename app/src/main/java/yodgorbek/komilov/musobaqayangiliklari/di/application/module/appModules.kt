@@ -3,18 +3,14 @@ package yodgorbek.komilov.musobaqayangiliklari.di.application.module
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
-
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-
 import retrofit2.CallAdapter
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsInterface
-
 import yodgorbek.komilov.musobaqayangiliklari.repository.NewsRepository
-
 import yodgorbek.komilov.musobaqayangiliklari.repository.NewsRepositoryImpl
 import yodgorbek.komilov.musobaqayangiliklari.viewmodel.MainViewModel
 import java.util.concurrent.TimeUnit
@@ -31,9 +27,9 @@ val appModules = module {
         )
     }
     // Tells Koin how to create an instance of CatRepository
-    factory<NewsRepository> { (NewsRepositoryImpl( sportNewsInterface= get())) }
+    factory<NewsRepository> { (NewsRepositoryImpl(sportNewsInterface = get())) }
     // Specific viewModel pattern to tell Koin how to build MainViewModel
-    viewModel { MainViewModel(sportNewsInterface = get())  }
+    viewModel { MainViewModel (newsRepository = get ())  }
 }
 
 /* Returns a custom OkHttpClient instance with interceptor. Used for building Retrofit service */

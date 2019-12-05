@@ -1,7 +1,6 @@
 package yodgorbek.komilov.musobaqayangiliklari
 
 import android.view.View
-import androidx.test.espresso.matcher.ViewMatchers.withId
 import com.agoda.kakao.image.KImageView
 import com.agoda.kakao.recycler.KRecyclerItem
 import com.agoda.kakao.recycler.KRecyclerView

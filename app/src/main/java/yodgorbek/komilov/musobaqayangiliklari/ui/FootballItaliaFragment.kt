@@ -7,26 +7,14 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import yodgorbek.komilov.musobaqayangiliklari.R
-import yodgorbek.komilov.musobaqayangiliklari.adapter.ESPNAdapter
-
 import yodgorbek.komilov.musobaqayangiliklari.adapter.FootballItaliaAdapter
-import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsInterface
-import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsResponse
-import yodgorbek.komilov.musobaqayangiliklari.viewmodel.BBCSportViewModel
 import yodgorbek.komilov.musobaqayangiliklari.viewmodel.FootballItaliaViewModel
 
 class FootballItaliaFragment : Fragment() {
 
-    private var footballItaliaAdapter : FootballItaliaAdapter? = null
+    private var footballItaliaAdapter: FootballItaliaAdapter? = null
     private lateinit var viewModel: FootballItaliaViewModel
 
 
@@ -36,29 +24,29 @@ class FootballItaliaFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-      val view =   inflater.inflate(R.layout.fragment_football_italia, container, false)
+        val view = inflater.inflate(R.layout.fragment_football_italia, container, false)
 
-        viewModel = ViewModelProviders.of(this).get(FootballItaliaViewModel::class.java)
-
-        val recyclerView = view.findViewById (R.id.recyclerView) as RecyclerView
-        val pb = view.findViewById(R.id.pb) as ProgressBar
-
-//        GlobalScope.launch(Dispatchers.Main) {
-//            val request = SportNewsInterface.create().getFootballItalia()
-//            val response = request.await()
+//        viewModel = ViewModelProviders.of(this).get(FootballItaliaViewModel::class.java)
 //
-//            pb.visibility = View.GONE
-//            response.body()?.let {
-//                footballItaliaAdapter = FootballItaliaAdapter(recyclerView.context)
+//        val recyclerView = view.findViewById(R.id.recyclerView) as RecyclerView
+//        val pb = view.findViewById(R.id.pb) as ProgressBar
 //
-//                recyclerView.layoutManager = LinearLayoutManager(context)
-//
-//                recyclerView.adapter = footballItaliaAdapter
-//
-//                footballItaliaAdapter?.setMovieListItems(response.body()!!.articles)
-//            }
-//
-//        }
+////        GlobalScope.launch(Dispatchers.Main) {
+////            val request = SportNewsInterface.create().getFootballItalia()
+////            val response = request.await()
+////
+////            pb.visibility = View.GONE
+////            response.body()?.let {
+////                footballItaliaAdapter = FootballItaliaAdapter(recyclerView.context)
+////
+////                recyclerView.layoutManager = LinearLayoutManager(context)
+////
+////                recyclerView.adapter = footballItaliaAdapter
+////
+////                footballItaliaAdapter?.setMovieListItems(response.body()!!.articles)
+////            }
+////
+////        }
         return view
     }
 

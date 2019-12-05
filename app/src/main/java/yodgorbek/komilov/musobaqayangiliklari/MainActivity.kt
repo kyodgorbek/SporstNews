@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val  bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom)
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom)
 
         selectedFragment = TopHeadlinesFragment()
 

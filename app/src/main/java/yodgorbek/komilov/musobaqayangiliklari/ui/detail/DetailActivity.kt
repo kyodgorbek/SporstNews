@@ -4,20 +4,12 @@ package yodgorbek.komilov.musobaqayangiliklari.ui.detail
 import android.os.Bundle
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-
-
 import androidx.appcompat.widget.Toolbar
-import com.github.florent37.shapeofview.shapes.DiagonalView
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_detail.*
-
 import yodgorbek.komilov.musobaqayangiliklari.R
 
 
 class DetailActivity : AppCompatActivity() {
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

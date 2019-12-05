@@ -18,7 +18,7 @@ class SelectedFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-    val view =     return inflater.inflate(R.layout.selected_fragment, container, false)
+        val view = return inflater.inflate(R.layout.selected_fragment, container, false)
     }
 
 }

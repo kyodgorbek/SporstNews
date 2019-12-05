@@ -1,8 +1,9 @@
 package yodgorbek.komilov.musobaqayangiliklari.adapter
 
+
 import android.annotation.SuppressLint
 import android.content.Context
-
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,31 +13,21 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.bbc_sport_item.view.*
-
-
-
+import yodgorbek.komilov.musobaqayangiliklari.R
 import yodgorbek.komilov.musobaqayangiliklari.model.Article
+import yodgorbek.komilov.musobaqayangiliklari.ui.detail.DetailActivity
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.time.Duration
 import java.time.LocalDateTime
 import java.util.*
 
-import android.content.Intent
-import yodgorbek.komilov.musobaqayangiliklari.R
-
-import yodgorbek.komilov.musobaqayangiliklari.ui.detail.DetailActivity
-
-
-
-
-
-
-
 
 @Suppress("UNREACHABLE_CODE")
-class BBCSportAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class BBCSportAdapter(private val context: Context) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var articleList: List<Article> = listOf()
+
     companion object {
         const val urlKey = "urlKey"
 
@@ -52,7 +43,7 @@ class BBCSportAdapter(private val context: Context) : RecyclerView.Adapter<Recyc
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         (holder as ViewHolder).apply {
-            when(position){
+            when (position) {
                 0 -> {
                     header.visibility = ViewGroup.VISIBLE
                     item.visibility = ViewGroup.GONE
@@ -74,7 +65,8 @@ class BBCSportAdapter(private val context: Context) : RecyclerView.Adapter<Recyc
                         d = input.parse(articleList[5].publishedAt)
                     } catch (e: ParseException) {
                         try {
-                            val fallback = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
+                            val fallback =
+                                SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
                             fallback.timeZone = TimeZone.getTimeZone("UTC")
                             d = fallback.parse(articleList[5].publishedAt)
                         } catch (e2: ParseException) {
@@ -92,12 +84,12 @@ class BBCSportAdapter(private val context: Context) : RecyclerView.Adapter<Recyc
                             articleTime.text = "${elapsedTime.toMinutes()}"
 
 
-                            }
                         }
                     }
                 }
             }
-        holder.itemView.setOnClickListener { v->
+        }
+        holder.itemView.setOnClickListener { v ->
             val intent = Intent(v.context, DetailActivity::class.java)
             intent.putExtra("urlKey", articleList[position].url)
 
