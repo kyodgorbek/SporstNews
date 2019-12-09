@@ -27,7 +27,7 @@ val appModules = module {
         )
     }
     // Tells Koin how to create an instance of CatRepository
-    factory<NewsRepository> { (NewsRepositoryImpl(sportNewsInterface = get())) }
+    factory<NewsRepository> { (NewsRepositoryImpl(sportsNewsApi = get())) }
     // Specific viewModel pattern to tell Koin how to build MainViewModel
     viewModel { MainViewModel (newsRepository = get ())  }
 }

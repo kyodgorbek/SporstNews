@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
 import yodgorbek.komilov.musobaqayangiliklari.SingleLiveEvent
 import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsInterface
+import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsResponse
 import yodgorbek.komilov.musobaqayangiliklari.model.Article
 import yodgorbek.komilov.musobaqayangiliklari.repository.NewsRepository
 import yodgorbek.komilov.musobaqayangiliklari.utils.UseCaseResult
@@ -14,22 +15,17 @@ import kotlin.coroutines.CoroutineContext
 
 
 @Suppress("UNCHECKED_CAST")
-class MainViewModel(newsRepository: NewsRepository) : ViewModel(), CoroutineScope {
+class MainViewModel(val newsRepository: NewsRepository) : ViewModel(), CoroutineScope {
     // Coroutine's background job
-     val job = Job()
-     val sportNewsInterface: SportNewsInterface? = null
+    val job = Job()
     // Define default thread for Coroutine as Main and add job
     override val coroutineContext: CoroutineContext = Dispatchers.Main + job
 
-     val showLoading = MutableLiveData<Boolean>()
-     val sportList = MutableLiveData <List<Article>>()
+    val showLoading = MutableLiveData<Boolean>()
+    val sportList = MutableLiveData <List<Article>>()
     val showError = SingleLiveEvent<String>()
 
-
-
-    fun loadNews(
-
-    ) {
+    fun loadNews() {
         // Show progressBar during the operation on the MAIN (default) thread
         showLoading.value = true
         // launch the Coroutine
@@ -37,7 +33,7 @@ class MainViewModel(newsRepository: NewsRepository) : ViewModel(), CoroutineScop
             // Switching from MAIN to IO thread for API operation
             // Update our data list with the new one from API
             val result = withContext(Dispatchers.IO) {
-                sportNewsInterface?.getNews()
+                newsRepository?.getNewsList()
             }
             // Hide progressBar once the operation is done on the MAIN (default) thread
             showLoading.value = false
@@ -49,8 +45,6 @@ class MainViewModel(newsRepository: NewsRepository) : ViewModel(), CoroutineScop
                 is Error -> showError.value = result.message
             }
         }
-
-
     }
 
     override fun onCleared() {
