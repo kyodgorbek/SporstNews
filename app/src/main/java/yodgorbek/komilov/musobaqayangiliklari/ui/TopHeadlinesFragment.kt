@@ -54,9 +54,6 @@ class TopHeadlinesFragment : Fragment() {
         topHeadlinesAdapter = TopHeadlinesAdapter(recyclerView.context)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = topHeadlinesAdapter
-//        val param = newsRepository
-//        val factory = MainViewModelFactory(param)
-//        viewModel = ViewModelProviders.of(this, factory).get(MainViewModel::class.java)
         initViewModel()
 
         return view
