@@ -2,10 +2,12 @@ package yodgorbek.komilov.musobaqayangiliklari.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+
+
 import kotlinx.coroutines.*
 import yodgorbek.komilov.musobaqayangiliklari.SingleLiveEvent
-import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsInterface
-import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsResponse
+
+
 import yodgorbek.komilov.musobaqayangiliklari.model.Article
 import yodgorbek.komilov.musobaqayangiliklari.repository.NewsRepository
 import yodgorbek.komilov.musobaqayangiliklari.utils.UseCaseResult
@@ -53,3 +55,4 @@ class MainViewModel(val newsRepository: NewsRepository) : ViewModel(), Coroutine
         job.cancel()
     }
 }
+

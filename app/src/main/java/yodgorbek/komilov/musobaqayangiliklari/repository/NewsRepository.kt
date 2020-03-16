@@ -1,6 +1,7 @@
 package yodgorbek.komilov.musobaqayangiliklari.repository
 
 
+
 import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsInterface
 import yodgorbek.komilov.musobaqayangiliklari.model.Article
 
@@ -18,8 +19,8 @@ class NewsRepositoryImpl(private val sportsNewsApi: SportNewsInterface) : NewsRe
     override suspend fun getNewsList(): UseCaseResult<List<Article>> {
 
         return try {
-            val result = sportsNewsApi.getNewsAsync().await()
-            UseCaseResult.Success(result) as UseCaseResult<List<Article>>
+            val result = sportsNewsApi.getNewsAsync().body()!!.articles
+            UseCaseResult.Success(result)
         } catch (ex: Exception) {
             UseCaseResult.Error(ex)
         }

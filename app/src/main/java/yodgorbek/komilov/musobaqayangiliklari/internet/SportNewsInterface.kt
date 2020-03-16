@@ -2,6 +2,7 @@ package yodgorbek.komilov.musobaqayangiliklari.internet
 
 
 import kotlinx.coroutines.Deferred
+import retrofit2.Response
 
 import retrofit2.http.GET
 
@@ -9,7 +10,7 @@ import retrofit2.http.GET
 interface SportNewsInterface {
 
     @GET("v2/top-headlines?country=us&apiKey=da331087e3f3462bb534b3b0917cbee9")
-     fun getNewsAsync(): Deferred<SportNewsResponse>
+     suspend fun getNewsAsync(): Response <SportNewsResponse>
 
     @GET("/v2/top-headlines?sources=espn&apiKey=da331087e3f3462bb534b3b0917cbee9")
     fun getEspn(): Deferred<List<SportNewsResponse>>
