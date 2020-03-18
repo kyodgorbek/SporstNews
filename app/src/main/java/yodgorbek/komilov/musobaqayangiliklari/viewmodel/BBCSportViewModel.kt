@@ -12,9 +12,10 @@ import kotlin.coroutines.CoroutineContext
 
 
 class BBCSportViewModel(
-    private val sportNewsInterface: SportNewsInterface)
+    private val sportNewsInterface: SportNewsInterface
+)
 
-    : ViewModel(),CoroutineScope {
+    : ViewModel(), CoroutineScope {
     // Coroutine's background job
     private val job = Job()
     // Define default thread for Coroutine as Main and add job

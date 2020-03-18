@@ -9,7 +9,8 @@ import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsResponse
 import yodgorbek.komilov.musobaqayangiliklari.utils.UseCaseResult
 import kotlin.coroutines.CoroutineContext
 
-class FootballItaliaViewModel(private val sportNewsInterface: SportNewsInterface
+class FootballItaliaViewModel(
+    private val sportNewsInterface: SportNewsInterface
 
 ) : ViewModel(), CoroutineScope {
     private val job = Job()

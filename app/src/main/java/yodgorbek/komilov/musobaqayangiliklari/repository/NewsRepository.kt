@@ -1,7 +1,6 @@
 package yodgorbek.komilov.musobaqayangiliklari.repository
 
 
-
 import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsInterface
 import yodgorbek.komilov.musobaqayangiliklari.model.Article
 
@@ -10,7 +9,7 @@ import yodgorbek.komilov.musobaqayangiliklari.utils.UseCaseResult
 
 interface NewsRepository {
     // Suspend is used to await the result from Deferred
-   suspend fun getNewsList(): UseCaseResult<List<Article>>
+    suspend fun getNewsList(): UseCaseResult<List<Article>>
 }
 
 

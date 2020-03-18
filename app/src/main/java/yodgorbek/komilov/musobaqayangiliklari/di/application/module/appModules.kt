@@ -29,7 +29,7 @@ val appModules = module {
     // Tells Koin how to create an instance of CatRepository
     factory<NewsRepository> { (NewsRepositoryImpl(sportsNewsApi = get())) }
     // Specific viewModel pattern to tell Koin how to build MainViewModel
-    viewModel { MainViewModel (newsRepository = get ())  }
+    viewModel { MainViewModel(newsRepository = get()) }
 }
 
 /* Returns a custom OkHttpClient instance with interceptor. Used for building Retrofit service */

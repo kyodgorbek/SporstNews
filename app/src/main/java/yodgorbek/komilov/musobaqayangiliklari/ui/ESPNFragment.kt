@@ -7,16 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.Deferred
 import yodgorbek.komilov.musobaqayangiliklari.R
 import yodgorbek.komilov.musobaqayangiliklari.SingleLiveEvent
 import yodgorbek.komilov.musobaqayangiliklari.adapter.ESPNAdapter
-import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsResponse
-import yodgorbek.komilov.musobaqayangiliklari.utils.UseCaseResult
 import yodgorbek.komilov.musobaqayangiliklari.viewmodel.ESPNViewModel
 
 
@@ -35,7 +30,7 @@ class ESPNFragment : Fragment() {
 
         val recyclerView = view.findViewById(R.id.recyclerView) as RecyclerView
         val pb = view.findViewById(R.id.pb) as ProgressBar
-      //  viewModel = ViewModelProviders.of(this).get(ESPNViewModel::class.java)
+        //  viewModel = ViewModelProviders.of(this).get(ESPNViewModel::class.java)
         espnAdapter = ESPNAdapter(recyclerView.context)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = espnAdapter

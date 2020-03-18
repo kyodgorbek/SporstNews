@@ -19,7 +19,7 @@ class BBCRepositoryImpl(private val sportNewsInterface: SportNewsInterface) : BB
          */
         return try {
             val result = sportNewsInterface.getBBCSport()
-            UseCaseResult.Success(result)  as UseCaseResult<List<Article>>
+            UseCaseResult.Success(result) as UseCaseResult<List<Article>>
         } catch (ex: Exception) {
             UseCaseResult.Error(ex)
         }

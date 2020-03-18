@@ -24,7 +24,7 @@ class MainViewModel(val newsRepository: NewsRepository) : ViewModel(), Coroutine
     override val coroutineContext: CoroutineContext = Dispatchers.Main + job
 
     val showLoading = MutableLiveData<Boolean>()
-    val sportList = MutableLiveData <List<Article>>()
+    val sportList = MutableLiveData<List<Article>>()
     val showError = SingleLiveEvent<String>()
 
     fun loadNews() {

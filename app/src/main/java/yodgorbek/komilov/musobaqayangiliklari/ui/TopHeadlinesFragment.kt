@@ -8,33 +8,24 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProviders
-
-
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_top_headlines.*
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 import yodgorbek.komilov.musobaqayangiliklari.R
-
 import yodgorbek.komilov.musobaqayangiliklari.adapter.TopHeadlinesAdapter
-import yodgorbek.komilov.musobaqayangiliklari.repository.NewsRepository
-
-
-
+import yodgorbek.komilov.musobaqayangiliklari.databinding.FragmentTopHeadlinesBinding
+import yodgorbek.komilov.musobaqayangiliklari.model.Article
 import yodgorbek.komilov.musobaqayangiliklari.viewmodel.MainViewModel
-
 
 
 class TopHeadlinesFragment : Fragment() {
 
+    private  var binding: FragmentTopHeadlinesBinding? = null
     private val viewModel by viewModel<MainViewModel>()
     private lateinit var topHeadlinesAdapter: TopHeadlinesAdapter
-   // private   val newsRepository: NewsRepository by inject()
-
+    // private   val newsRepository: NewsRepository by inject()
+    private  var article:List<Article>? = null
 
 
     //3
@@ -47,16 +38,18 @@ class TopHeadlinesFragment : Fragment() {
             R.layout.fragment_top_headlines
             , container, false
         )
-
-
         val recyclerView = view.findViewById(R.id.recyclerView) as RecyclerView
         val pb = view.findViewById(R.id.pb) as ProgressBar
-        topHeadlinesAdapter = TopHeadlinesAdapter(recyclerView.context)
+        topHeadlinesAdapter = TopHeadlinesAdapter(recyclerView.context, article)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = topHeadlinesAdapter
         initViewModel()
 
+         binding?.root
+
         return view
+
+
     }
 
     private fun initViewModel() {
@@ -75,5 +68,3 @@ class TopHeadlinesFragment : Fragment() {
         viewModel?.loadNews()
     }
 }
-
-

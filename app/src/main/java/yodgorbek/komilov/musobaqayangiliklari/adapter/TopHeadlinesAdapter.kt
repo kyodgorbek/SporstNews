@@ -1,65 +1,84 @@
 package yodgorbek.komilov.musobaqayangiliklari.adapter
 
 
-import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
+import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
-import yodgorbek.komilov.musobaqayangiliklari.R
+import kotlinx.android.synthetic.main.espn_list.view.*
+import yodgorbek.komilov.musobaqayangiliklari.databinding.NewsListBinding
 import yodgorbek.komilov.musobaqayangiliklari.model.Article
+import yodgorbek.komilov.musobaqayangiliklari.ui.detail.DetailActivity
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.time.Duration
 import java.time.LocalDateTime
 import java.util.*
-import kotlin.properties.Delegates
 
 
-@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-class TopHeadlinesAdapter(val context: Context) :
+class TopHeadlinesAdapter(
+    val context: Context, var articleList:
+    List<Article>?
+) :
     RecyclerView.Adapter<TopHeadlinesAdapter.MyViewHolder>() {
 
 
+    companion object {
+        const val urlKey = "urlKey"
 
-    private var articleList: List<Article> by Delegates.observable(emptyList()) { _, _, _ ->
-
-        notifyDataSetChanged()
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.news_list, parent, false)
-        return MyViewHolder(view)
+    lateinit var binding: NewsListBinding
+
+
+    fun updateData(newList: List<Article>) {
+        articleList = newList
+        Log.e("articleListSize", articleList?.size.toString())
+
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
+            MyViewHolder {
+        binding = NewsListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+
+        return MyViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
-        return articleList.size
+        return articleList!!.size
     }
 
-    @SuppressLint("NewApi")
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        holder.setData(articleList!![position])
 
-        holder.articleTitle.text = articleList.get(position).title
-        holder.articleSourceName.text = articleList.get(position).source.name
-        Picasso.get().load(articleList.get(position).urlToImage).into(holder.image)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            binding.root.setOnClickListener { v ->
+                val intent = Intent(v.context, DetailActivity::class.java)
+                intent.putExtra(urlKey, articleList!![position].url)
 
-        val input = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX")
-        val output = SimpleDateFormat("dd/MM/yyyy")
+                v.context.startActivity(intent)
+            }
+        }
+
+
+        val input = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX", Locale.getDefault())
+        val output = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         var d = Date()
         try {
-            d = input.parse(articleList[5].publishedAt)
+            d = input.parse(articleList!![5].publishedAt)
         } catch (e: ParseException) {
             try {
-                val fallback = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+                val fallback =
+                    SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
                 fallback.timeZone = TimeZone.getTimeZone("UTC")
-                d = fallback.parse(articleList[5].publishedAt)
+                d = fallback.parse(articleList!![5].publishedAt)
             } catch (e2: ParseException) {
-                // TODO handle error
+
                 val formatted = output.format(d)
                 val timelinePoint = LocalDateTime.parse(formatted)
                 val now = LocalDateTime.now()
@@ -70,29 +89,28 @@ class TopHeadlinesAdapter(val context: Context) :
                 println(now)
                 elapsedTime.toMinutes()
 
-                holder.articleTime.text = "${elapsedTime.toMinutes()}"
+                binding.root.articleTime.text = "${elapsedTime.toMinutes()}"
+
+
+            }
+        }
+    }
+
+    inner class MyViewHolder(private var binding: NewsListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun setData(model: Article) {
+            with(binding) {
+                article = model
+                executePendingBindings()
+
 
             }
         }
 
     }
 
-    fun updateData(newList: List<Article>) {
-         articleList = newList
-        Log.e("articleListSize",articleList?.size.toString())
 
-    }
-
-
-    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView!!) {
-
-        val image: ImageView = itemView!!.findViewById(R.id.imageView)
-        val articleTitle: TextView = itemView!!.findViewById(R.id.articleTitle)
-        val articleSourceName: TextView = itemView!!.findViewById(R.id.articleSourceName)
-        val imageCategory: ImageView = itemView!!.findViewById(R.id.imageCategory)
-        val articleTime: TextView = itemView!!.findViewById(R.id.articleTime)
-
-    }
 }
 
 
