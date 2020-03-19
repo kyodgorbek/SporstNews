@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,11 +22,11 @@ import yodgorbek.komilov.musobaqayangiliklari.viewmodel.MainViewModel
 
 class TopHeadlinesFragment : Fragment() {
 
-    private  var binding: FragmentTopHeadlinesBinding? = null
+    private lateinit var binding: FragmentTopHeadlinesBinding
     private val viewModel by viewModel<MainViewModel>()
     private lateinit var topHeadlinesAdapter: TopHeadlinesAdapter
-    // private   val newsRepository: NewsRepository by inject()
-    private  var article:List<Article>? = null
+    // private val newsRepository: NewsRepository by inject()
+
 
 
     //3
@@ -34,37 +35,32 @@ class TopHeadlinesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(
-            R.layout.fragment_top_headlines
-            , container, false
-        )
-        val recyclerView = view.findViewById(R.id.recyclerView) as RecyclerView
-        val pb = view.findViewById(R.id.pb) as ProgressBar
-        topHeadlinesAdapter = TopHeadlinesAdapter(recyclerView.context, article)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = topHeadlinesAdapter
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_top_headlines,container,false)
+        binding.lifecycleOwner = this
+        topHeadlinesAdapter = TopHeadlinesAdapter()
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initViewModel()
-
-         binding?.root
-
-        return view
-
-
     }
 
     private fun initViewModel() {
-        viewModel?.sportList?.observe(this, Observer { newList ->
+        viewModel.sportList.observe(this, Observer { newList ->
             topHeadlinesAdapter.updateData(newList)
+            binding.recyclerView.adapter = topHeadlinesAdapter
+            topHeadlinesAdapter.notifyDataSetChanged()
         })
 
-        viewModel?.showLoading?.observe(this, Observer { showLoading ->
+        viewModel.showLoading.observe(this, Observer { showLoading ->
             pb.visibility = if (showLoading) View.VISIBLE else View.GONE
         })
 
-        viewModel?.showError?.observe(this, Observer { showError ->
+        viewModel.showError.observe(this, Observer { showError ->
             (showError)
         })
 
-        viewModel?.loadNews()
+        viewModel.loadNews()
     }
 }
