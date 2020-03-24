@@ -13,13 +13,13 @@ interface SportNewsInterface {
     suspend fun getNewsAsync(): Response<SportNewsResponse>
 
     @GET("/v2/top-headlines?sources=espn&apiKey=da331087e3f3462bb534b3b0917cbee9")
-    fun getEspn(): Deferred<List<SportNewsResponse>>
+    suspend fun getEspn(): Response<SportNewsResponse>
 
     @GET("/v2/top-headlines?sources=football-italia&apiKey=da331087e3f3462bb534b3b0917cbee9")
-    fun getFootballItalia(): Deferred<List<SportNewsResponse>>
+    suspend fun getFootballItalia(): Response<SportNewsResponse>
 
     @GET("/v2/top-headlines?sources=bbc-sport&apiKey=da331087e3f3462bb534b3b0917cbee9")
-    fun getBBCSport(): Deferred<List<SportNewsResponse>>
+    suspend fun getBBCSport(): Response<SportNewsResponse>
 
 
 }

@@ -8,18 +8,17 @@ import yodgorbek.komilov.musobaqayangiliklari.utils.UseCaseResult
 
 interface BBCRepository {
     // Suspend is used to await the result from Deferred
-    suspend fun getBBCList(): UseCaseResult<List<Article>>
+    suspend fun getNewsList(): UseCaseResult<List<Article>>
 }
 
-class BBCRepositoryImpl(private val sportNewsInterface: SportNewsInterface) : BBCRepository {
-    override suspend fun getBBCList(): UseCaseResult<List<Article>> {
-        /*
-         We try to return a list of cats from the API
-         Await the result from web service and then return it, catching any error from API
-         */
+
+@Suppress("UNCHECKED_CAST")
+class BBCRepositoryImpl(private val bbcsportNewsApi: SportNewsInterface) : BBCRepository {
+    override suspend fun getNewsList(): UseCaseResult<List<Article>> {
+
         return try {
-            val result = sportNewsInterface.getBBCSport()
-            UseCaseResult.Success(result) as UseCaseResult<List<Article>>
+            val result = bbcsportNewsApi.getBBCSport().body()!!.articles
+            UseCaseResult.Success(result)
         } catch (ex: Exception) {
             UseCaseResult.Error(ex)
         }

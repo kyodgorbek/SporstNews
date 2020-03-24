@@ -2,25 +2,18 @@ package yodgorbek.komilov.musobaqayangiliklari.adapter
 
 
 
-import android.annotation.SuppressLint
-import android.annotation.TargetApi
+
 import android.content.Intent
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.databinding.InverseMethod
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.espn_list.view.*
 import yodgorbek.komilov.musobaqayangiliklari.databinding.NewsListBinding
 import yodgorbek.komilov.musobaqayangiliklari.model.Article
 import yodgorbek.komilov.musobaqayangiliklari.ui.detail.DetailActivity
-import java.text.ParseException
-import java.text.SimpleDateFormat
-import java.time.Duration
-import java.time.LocalDateTime
-import java.util.*
+
 
 
 class TopHeadlinesAdapter(
@@ -40,7 +33,7 @@ class TopHeadlinesAdapter(
 
     fun updateData(newList: List<Article>) {
         articleList = newList
-        Log.e("articleListSize", articleList?.size.toString())
+        Log.e("articleListSize", articleList.size.toString())
 
     }
 
@@ -62,7 +55,7 @@ class TopHeadlinesAdapter(
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             binding.root.setOnClickListener { v ->
                 val intent = Intent(v.context, DetailActivity::class.java)
-                intent.putExtra(urlKey, articleList!![position].url)
+                intent.putExtra(urlKey, articleList[position].url)
 
                 v.context.startActivity(intent)
             }

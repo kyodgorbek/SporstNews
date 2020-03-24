@@ -7,28 +7,25 @@ import kotlinx.coroutines.*
 import yodgorbek.komilov.musobaqayangiliklari.SingleLiveEvent
 import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsInterface
 import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsResponse
+import yodgorbek.komilov.musobaqayangiliklari.model.Article
+import yodgorbek.komilov.musobaqayangiliklari.repository.BBCRepository
+import yodgorbek.komilov.musobaqayangiliklari.repository.NewsRepository
 import yodgorbek.komilov.musobaqayangiliklari.utils.UseCaseResult
 import kotlin.coroutines.CoroutineContext
 
 
-class BBCSportViewModel(
-    private val sportNewsInterface: SportNewsInterface
-)
-
-    : ViewModel(), CoroutineScope {
+@Suppress("UNCHECKED_CAST")
+class BBCSportViewModel(val bbcRepository: BBCRepository) : ViewModel(), CoroutineScope {
     // Coroutine's background job
-    private val job = Job()
+    val job = Job()
     // Define default thread for Coroutine as Main and add job
     override val coroutineContext: CoroutineContext = Dispatchers.Main + job
 
-    private val showLoading = MutableLiveData<Boolean>()
-    private val sportList = MutableLiveData<List<Deferred<SportNewsResponse>>>()
+    val showLoading = MutableLiveData<Boolean>()
+    val sportList = MutableLiveData<List<Article>>()
     val showError = SingleLiveEvent<String>()
 
-    fun loadNews(
-        observe: Any?,
-        observer: Observer<Any>
-    ) {
+    fun loadNews() {
         // Show progressBar during the operation on the MAIN (default) thread
         showLoading.value = true
         // launch the Coroutine
@@ -36,20 +33,18 @@ class BBCSportViewModel(
             // Switching from MAIN to IO thread for API operation
             // Update our data list with the new one from API
             val result = withContext(Dispatchers.IO) {
-                sportNewsInterface.getBBCSport()
+                bbcRepository?.getNewsList()
             }
             // Hide progressBar once the operation is done on the MAIN (default) thread
             showLoading.value = false
             when (result) {
 
                 is UseCaseResult.Success<*> -> {
-                    sportList.value = result.data as List<Deferred<SportNewsResponse>>
+                    sportList.value = result.data as List<Article>
                 }
                 is Error -> showError.value = result.message
             }
         }
-
-
     }
 
     override fun onCleared() {
@@ -58,5 +53,4 @@ class BBCSportViewModel(
         job.cancel()
     }
 }
-
 

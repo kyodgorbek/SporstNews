@@ -5,18 +5,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
+
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+
 import kotlinx.android.synthetic.main.fragment_top_headlines.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import yodgorbek.komilov.musobaqayangiliklari.R
 import yodgorbek.komilov.musobaqayangiliklari.adapter.TopHeadlinesAdapter
 import yodgorbek.komilov.musobaqayangiliklari.databinding.FragmentTopHeadlinesBinding
-import yodgorbek.komilov.musobaqayangiliklari.model.Article
+
 import yodgorbek.komilov.musobaqayangiliklari.viewmodel.MainViewModel
 
 

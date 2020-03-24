@@ -1,135 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:background="@android:color/darker_gray"
-        android:elevation="4dp">
+        <variable
+            name="article"
+            type="yodgorbek.komilov.musobaqayangiliklari.model.Article">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/innerRoot"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/white">
-
-            <ImageView
-                android:id="@+id/topFlameImageView"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:contentDescription="Header title"
-                android:padding="8dp"
-                android:tint="@android:color/holo_red_light"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/topTitleTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Top News"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/topFlameImageView"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/bottomTitleTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Editor on duty: Dan"
-                android:textColor="@android:color/darker_gray"
-                app:layout_constraintBottom_toBottomOf="@id/topFlameImageView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/topFlameImageView"
-                app:layout_constraintTop_toBottomOf="@id/topTitleTextView" />
-
-            <ImageView
-                android:id="@+id/bigImage"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:background="@android:color/holo_blue_dark"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/topFlameImageView" />
-
-            <ImageView
-                android:id="@+id/titleImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:contentDescription="Title"
-                android:padding="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/bigImage" />
-
-            <TextView
-                android:id="@+id/titleTextView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Real Madrid provide Toni Kroos injury update"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/titleImageView"
-                app:layout_constraintTop_toTopOf="@id/titleImageView" />
-
-            <ImageView
-                android:id="@+id/userAvatarImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:contentDescription="Title"
-                android:padding="8dp"
-                android:src="@drawable/ic_espn"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/titleTextView" />
-
-            <TextView
-                android:id="@+id/userNameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Onefootball"
-                android:textColor="@android:color/black"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/userAvatarImageView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/userAvatarImageView"
-                app:layout_constraintTop_toTopOf="@id/userAvatarImageView" />
-
-            <TextView
-                android:id="@+id/timestampTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:text="- 17m"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/userNameTextView"
-                app:layout_constraintStart_toEndOf="@+id/userNameTextView" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+        </variable>
+    </data>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -144,6 +30,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:contentDescription="bbc"
+                app:image_url="@{article.urlToImage}"
                 tools:background="@color/colorPrimary" />
 
             <TextView
@@ -157,7 +44,7 @@
                 android:ellipsize="end"
                 android:lines="3"
                 android:maxLines="3"
-                android:text="1\n2\n3\n" />
+                android:text="@{article.title}" />
 
             <ImageView
                 android:id="@+id/imageCategory"
@@ -181,7 +68,7 @@
                 android:layout_toEndOf="@id/imageCategory"
                 android:layout_toRightOf="@id/imageCategory"
                 android:gravity="center|start"
-                android:text="Onefootbal" />
+                android:text="@{article.source.name}" />
 
             <TextView
                 android:id="@+id/articleTime"
@@ -195,9 +82,10 @@
                 android:layout_toEndOf="@id/articleSourceName"
                 android:layout_toRightOf="@id/articleSourceName"
                 android:gravity="center|start"
-                android:text="- 1h"
                 android:textColor="@android:color/darker_gray"
+                app:updatedTime="@{article.publishedAt}"
                 tools:ignore="NotSibling" />
         </RelativeLayout>
+
     </androidx.cardview.widget.CardView>
-</FrameLayout>
+</layout>

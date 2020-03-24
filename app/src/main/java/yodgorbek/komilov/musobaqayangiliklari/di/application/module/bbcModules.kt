@@ -15,29 +15,29 @@ import yodgorbek.komilov.musobaqayangiliklari.repository.BBCRepository
 import yodgorbek.komilov.musobaqayangiliklari.repository.BBCRepositoryImpl
 import yodgorbek.komilov.musobaqayangiliklari.repository.NewsRepository
 import yodgorbek.komilov.musobaqayangiliklari.repository.NewsRepositoryImpl
+import yodgorbek.komilov.musobaqayangiliklari.viewmodel.BBCSportViewModel
 import yodgorbek.komilov.musobaqayangiliklari.viewmodel.MainViewModel
 import java.util.concurrent.TimeUnit
 
-const val BASE_URL = "https://newsapi.org/"
+const val base_url = "https://newsapi.org/"
 
-val appModules = module {
+val bbcModules = module {
     // The Retrofit service using our custom HTTP client instance as a singleton
-    single(named("appModules")) {
-        createWebService<SportNewsInterface>(
-            okHttpClient = createHttpClient(),
+    single(named("bbcModules")) {
+        createBBCWebService<SportNewsInterface>(
+            okHttpClient = createBBCHttpClient(),
             factory = RxJava2CallAdapterFactory.create(),
-            baseUrl = BASE_URL
+            baseUrl = base_url
         )
     }
-    // Tells Koin how to create an instance of CatRepository
-    factory<NewsRepository> { (NewsRepositoryImpl(sportsNewsApi = get(named("appModules")))) }
-   // factory<NewsRepository> { (NewsRepositoryImpl(sportsNewsApi = get())) }
-    // Specific viewModel pattern to tell Koin how to build MainViewModel
-    viewModel { MainViewModel(newsRepository = get(named("appModules"))) }
+
+    factory<BBCRepository> { (BBCRepositoryImpl(bbcsportNewsApi = get(named("bbcModules")))) }
+    // Tells Koin how to create an instance of BBCRepository
+    viewModel { BBCSportViewModel(bbcRepository = get(named("bbcModules"))) }
 }
 
 /* Returns a custom OkHttpClient instance with interceptor. Used for building Retrofit service */
-fun createHttpClient(): OkHttpClient {
+fun createBBCHttpClient(): OkHttpClient {
     val client = OkHttpClient.Builder()
     client.readTimeout(5 * 60, TimeUnit.SECONDS)
     return client.addInterceptor {
@@ -50,7 +50,7 @@ fun createHttpClient(): OkHttpClient {
 }
 
 /* function to build our Retrofit service */
-inline fun <reified T> createWebService(
+inline fun <reified T> createBBCWebService(
     okHttpClient: OkHttpClient,
     factory: CallAdapter.Factory, baseUrl: String
 ): T {

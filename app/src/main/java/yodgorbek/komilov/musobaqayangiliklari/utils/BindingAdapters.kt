@@ -1,21 +1,20 @@
 package yodgorbek.komilov.musobaqayangiliklari.utils
 
 
-import android.annotation.SuppressLint
-import android.annotation.TargetApi
-import android.os.Build
+
+
+
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.annotation.RequiresApi
+import androidx.annotation.NonNull
 import androidx.databinding.BindingAdapter
 import com.squareup.picasso.Picasso
 import yodgorbek.komilov.musobaqayangiliklari.R
-import yodgorbek.komilov.musobaqayangiliklari.adapter.TopHeadlinesAdapter
 import java.text.ParseException
 import java.text.SimpleDateFormat
-import java.time.Duration
-import java.time.LocalDateTime
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 @BindingAdapter("bind:image_url")
 fun loadImage(imageView: ImageView, image_url: String) {
@@ -23,57 +22,72 @@ fun loadImage(imageView: ImageView, image_url: String) {
         .placeholder(R.mipmap.ic_launcher)
         .error(R.mipmap.ic_launcher)
         .into(imageView)
+}
 
-    @BindingAdapter("app:formattedTime")
-    fun formattedTime(view: TextView, time:String) {
-       // view.setText(view.getContext().getString(getFormattedTime, time))
-    }
 
-    @SuppressLint("NewApi")
-    @TargetApi(Build.VERSION_CODES.O)
-    @RequiresApi(Build.VERSION_CODES.O)
-    fun getFormattedTime(time:String): String {
-        //"published_date":"2015-08-13T20:21:28-5:00 skip time zone"
-        val input = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX", Locale.getDefault())
-        val output = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-        var d = Date()
-        try {
-            d = input.parse(time!!)
-        } catch (e: ParseException) {
-            try {
-                val fallback =
-                    SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
-                fallback.timeZone = TimeZone.getTimeZone("UTC")
-                d = fallback.parse(time)
-            } catch (e2: ParseException) {
-
-                val formatted = output.format(d)
-                val timelinePoint = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    LocalDateTime.parse(formatted)
-                } else {
-                    TODO("VERSION.SDK_INT < O")
-                }
-                val now = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    LocalDateTime.now()
-                } else {
-                    TODO("VERSION.SDK_INT < O")
-                }
-
-                var elapsedTime = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    Duration.between(timelinePoint, now)
-                } else {
-                    TODO("VERSION.SDK_INT < O")
-                }
-
-                println(timelinePoint)
-                println(now)
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    elapsedTime.toMinutes()
-                }
-            }
-
+fun getAppropriateTimeDiffResolution(
+    start: Date?,
+    end: Date?
+): String {
+    return if (start != null && end != null) {
+        val diffInMs: Long = end.getTime() - start.getTime()
+        val diffInMins: Long = TimeUnit.MILLISECONDS.toMinutes(diffInMs)
+        val diffInHrs: Long = TimeUnit.MILLISECONDS.toHours(diffInMs)
+        val diffInDays: Long = TimeUnit.MILLISECONDS.toDays(diffInMs)
+        val diffInMonth: Long = TimeUnit.MILLISECONDS.toDays(diffInMs) / 30
+        val diffInYear = diffInMonth / 12
+        val stringBuilder = StringBuilder()
+        if (diffInMins < 60) {
+            if (diffInMins > 1) stringBuilder.append(diffInMins)
+                .append(" Mins Ago")
+                .toString() else if (diffInMins == 0L) "Now" else stringBuilder.append(
+                diffInMins
+            ).append(" Mins Ago").toString()
+        } else if (diffInHrs < 24) {
+            stringBuilder.append(diffInHrs)
+                .append(" Hours Ago")
+                .toString()
+        } else if (diffInDays < 30) {
+            stringBuilder.append(diffInDays)
+                .append(" Days Ago").toString()
+        } else if (diffInMonth < 12) {
+            stringBuilder.append(diffInMonth)
+                .append(" Months Ago")
+                .toString()
+        } else {
+            stringBuilder.append(diffInYear)
+                .append(" Years Ago").toString()
 
         }
-        return time
+    } else {
+        "--"
     }
 }
+
+fun getFormattedTime(@NonNull time:String): String {
+    Log.e("BindingAdapter",time)
+
+    val input = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX", Locale.getDefault())
+    var d : Date?
+    try {
+        d = input.parse(time)
+        return getAppropriateTimeDiffResolution(d, Date())
+    } catch (e: ParseException) {
+        try {
+            val fallback =
+                SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
+            d = fallback.parse(time)
+            return getAppropriateTimeDiffResolution(d,Date())
+        } catch (e2: ParseException) {
+            return "--"
+        }
+    }
+}
+
+
+@BindingAdapter("updatedTime")
+fun updatedTime(view: TextView, time: String) {
+    view.text =
+        getFormattedTime(time)
+}
+

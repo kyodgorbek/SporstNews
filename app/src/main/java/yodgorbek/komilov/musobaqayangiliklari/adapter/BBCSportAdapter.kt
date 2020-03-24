@@ -1,120 +1,91 @@
 package yodgorbek.komilov.musobaqayangiliklari.adapter
 
 
-import android.annotation.SuppressLint
-import android.content.Context
+
 import android.content.Intent
+import android.os.Build
+import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.cardview.widget.CardView
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.bbc_sport_item.view.*
-import yodgorbek.komilov.musobaqayangiliklari.R
+import yodgorbek.komilov.musobaqayangiliklari.databinding.BbcSportItemBinding
+
 import yodgorbek.komilov.musobaqayangiliklari.model.Article
 import yodgorbek.komilov.musobaqayangiliklari.ui.detail.DetailActivity
-import java.text.ParseException
-import java.text.SimpleDateFormat
-import java.time.Duration
-import java.time.LocalDateTime
-import java.util.*
 
 
-@Suppress("UNREACHABLE_CODE")
-class BBCSportAdapter(private val context: Context) :
-    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    var articleList: List<Article> = listOf()
+
+class BBCSportAdapter(
+
+
+) :
+    RecyclerView.Adapter<BBCSportAdapter.MyViewHolder>() {
+
 
     companion object {
         const val urlKey = "urlKey"
 
     }
 
+    lateinit var binding: BbcSportItemBinding
+    lateinit var articleList: List<Article>
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.bbc_sport_item, null)
-        return ViewHolder(view)
+    fun updateData(newList: List<Article>) {
+        articleList = newList
+        Log.e("articleListSize", articleList.size.toString())
+
     }
 
-    @SuppressLint("NewApi")
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
+            MyViewHolder {
+        binding = BbcSportItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        (holder as ViewHolder).apply {
-            when (position) {
-                0 -> {
-                    header.visibility = ViewGroup.VISIBLE
-                    item.visibility = ViewGroup.GONE
-
-                    Picasso.get().load(articleList[position].urlToImage)
-                        .into(bigImage)
-                }
-                else -> {
-                    header.visibility = ViewGroup.GONE
-                    item.visibility = ViewGroup.VISIBLE
-
-                    articleTitle.text = articleList[position].title
-                    articleSourceName.text = articleList[position].source.name
-                    Picasso.get().load(articleList[position].urlToImage).into(image)
-                    val input = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX", Locale.getDefault())
-                    val output = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                    var d = Date()
-                    try {
-                        d = input.parse(articleList[5].publishedAt)
-                    } catch (e: ParseException) {
-                        try {
-                            val fallback =
-                                SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
-                            fallback.timeZone = TimeZone.getTimeZone("UTC")
-                            d = fallback.parse(articleList[5].publishedAt)
-                        } catch (e2: ParseException) {
-
-                            val formatted = output.format(d)
-                            val timelinePoint = LocalDateTime.parse(formatted)
-                            val now = LocalDateTime.now()
-
-                            val elapsedTime = Duration.between(timelinePoint, now)
-
-                            println(timelinePoint)
-                            println(now)
-                            elapsedTime.toMinutes()
-
-                            articleTime.text = "${elapsedTime.toMinutes()}"
-
-
-                        }
-                    }
-                }
-            }
-        }
-        holder.itemView.setOnClickListener { v ->
-            val intent = Intent(v.context, DetailActivity::class.java)
-            intent.putExtra("urlKey", articleList[position].url)
-
-            v.context.startActivity(intent)
-        }
+        return MyViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
         return articleList.size
     }
 
-    fun setMovieListItems(articleList: List<Article>) {
-        this.articleList = articleList
-        notifyDataSetChanged()
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        holder.setData(articleList[position])
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            binding.root.setOnClickListener { v ->
+                val intent = Intent(v.context, DetailActivity::class.java)
+                intent.putExtra(urlKey, articleList[position].url)
+
+                v.context.startActivity(intent)
+            }
+        }
+
+
+
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val image: ImageView = itemView.imageView
-        val articleTitle: TextView = itemView.articleTitle
-        val articleSourceName: TextView = itemView.articleSourceName
-        val imageCategory: ImageView = itemView.imageCategory
-        val articleTime: TextView = itemView.articleTime
 
-        val bigImage = itemView.bigImage
-        val header: CardView = itemView.header
-        val item: CardView = itemView.item
+
+
+
+
+
+    inner class MyViewHolder(private var binding: BbcSportItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun setData(model: Article) {
+            with(binding) {
+                article = model
+                executePendingBindings()
+
+
+            }
+        }
+
     }
+
+
 }
+
+
