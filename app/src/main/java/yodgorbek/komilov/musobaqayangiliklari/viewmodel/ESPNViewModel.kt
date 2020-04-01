@@ -8,25 +8,23 @@ import kotlinx.coroutines.*
 import yodgorbek.komilov.musobaqayangiliklari.SingleLiveEvent
 import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsInterface
 import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsResponse
+import yodgorbek.komilov.musobaqayangiliklari.model.Article
+import yodgorbek.komilov.musobaqayangiliklari.repository.BBCRepository
+import yodgorbek.komilov.musobaqayangiliklari.repository.ESPNRepository
 import yodgorbek.komilov.musobaqayangiliklari.utils.UseCaseResult
 import kotlin.coroutines.CoroutineContext
 
-class ESPNViewModel(
-    private val sportNewsInterface: SportNewsInterface
-
-) : ViewModel(), CoroutineScope {
-    private val job = Job()
+class ESPNViewModel(val espnRepository: ESPNRepository) : ViewModel(), CoroutineScope {
+    // Coroutine's background job
+    val job = Job()
     // Define default thread for Coroutine as Main and add job
     override val coroutineContext: CoroutineContext = Dispatchers.Main + job
 
-    private val showLoading = MutableLiveData<Boolean>()
-    private val sportList = MutableLiveData<List<Deferred<SportNewsResponse>>>()
+    val showLoading = MutableLiveData<Boolean>()
+    val sportList = MutableLiveData<List<Article>>()
     val showError = SingleLiveEvent<String>()
 
-    fun loadNews(
-        viewLifecycleOwner: LifecycleOwner,
-        observer: Observer<Any>
-    ) {
+    fun loadNews() {
         // Show progressBar during the operation on the MAIN (default) thread
         showLoading.value = true
         // launch the Coroutine
@@ -34,20 +32,18 @@ class ESPNViewModel(
             // Switching from MAIN to IO thread for API operation
             // Update our data list with the new one from API
             val result = withContext(Dispatchers.IO) {
-                sportNewsInterface.getEspn()
+                espnRepository?.getESPNList()
             }
             // Hide progressBar once the operation is done on the MAIN (default) thread
             showLoading.value = false
             when (result) {
 
                 is UseCaseResult.Success<*> -> {
-                    sportList.value = result.data as List<Deferred<SportNewsResponse>>
+                    sportList.value = result.data as List<Article>
                 }
                 is Error -> showError.value = result.message
             }
         }
-
-
     }
 
     override fun onCleared() {
@@ -56,3 +52,4 @@ class ESPNViewModel(
         job.cancel()
     }
 }
+

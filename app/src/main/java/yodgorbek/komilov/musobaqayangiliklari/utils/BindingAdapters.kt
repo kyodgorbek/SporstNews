@@ -1,9 +1,6 @@
 package yodgorbek.komilov.musobaqayangiliklari.utils
 
 
-
-
-
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
@@ -30,7 +27,7 @@ fun getAppropriateTimeDiffResolution(
     end: Date?
 ): String {
     return if (start != null && end != null) {
-        val diffInMs: Long = end.getTime() - start.getTime()
+        val diffInMs: Long = end.time - start.time
         val diffInMins: Long = TimeUnit.MILLISECONDS.toMinutes(diffInMs)
         val diffInHrs: Long = TimeUnit.MILLISECONDS.toHours(diffInMs)
         val diffInDays: Long = TimeUnit.MILLISECONDS.toDays(diffInMs)
@@ -64,11 +61,11 @@ fun getAppropriateTimeDiffResolution(
     }
 }
 
-fun getFormattedTime(@NonNull time:String): String {
-    Log.e("BindingAdapter",time)
+fun getFormattedTime(@NonNull time: String): String {
+    Log.e("BindingAdapter", time)
 
     val input = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX", Locale.getDefault())
-    var d : Date?
+    var d: Date?
     try {
         d = input.parse(time)
         return getAppropriateTimeDiffResolution(d, Date())
@@ -77,7 +74,7 @@ fun getFormattedTime(@NonNull time:String): String {
             val fallback =
                 SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
             d = fallback.parse(time)
-            return getAppropriateTimeDiffResolution(d,Date())
+            return getAppropriateTimeDiffResolution(d, Date())
         } catch (e2: ParseException) {
             return "--"
         }

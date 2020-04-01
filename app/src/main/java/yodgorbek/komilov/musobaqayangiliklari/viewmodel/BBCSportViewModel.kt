@@ -33,7 +33,7 @@ class BBCSportViewModel(val bbcRepository: BBCRepository) : ViewModel(), Corouti
             // Switching from MAIN to IO thread for API operation
             // Update our data list with the new one from API
             val result = withContext(Dispatchers.IO) {
-                bbcRepository?.getNewsList()
+                bbcRepository?.getBBCList()
             }
             // Hide progressBar once the operation is done on the MAIN (default) thread
             showLoading.value = false

@@ -6,59 +6,64 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_sport_bbc.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import yodgorbek.komilov.musobaqayangiliklari.R
 import yodgorbek.komilov.musobaqayangiliklari.SingleLiveEvent
+import yodgorbek.komilov.musobaqayangiliklari.adapter.BBCSportAdapter
 import yodgorbek.komilov.musobaqayangiliklari.adapter.ESPNAdapter
+import yodgorbek.komilov.musobaqayangiliklari.databinding.FragmentEspnBinding
+import yodgorbek.komilov.musobaqayangiliklari.databinding.FragmentSportBbcBinding
+import yodgorbek.komilov.musobaqayangiliklari.viewmodel.BBCSportViewModel
 import yodgorbek.komilov.musobaqayangiliklari.viewmodel.ESPNViewModel
 
 
-@Suppress("UNREACHABLE_CODE")
 class ESPNFragment : Fragment() {
-    lateinit var viewModel: ESPNViewModel
-    var espnAdapter: ESPNAdapter? = null
-    val showError = SingleLiveEvent<String>()
 
+    private lateinit var binding: FragmentEspnBinding
+    private val viewModel by viewModel<ESPNViewModel>()
+    private lateinit var espnAdapter: ESPNAdapter
+
+
+
+
+    //3
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_espn, container, false)
-
-        val recyclerView = view.findViewById(R.id.recyclerView) as RecyclerView
-        val pb = view.findViewById(R.id.pb) as ProgressBar
-        //  viewModel = ViewModelProviders.of(this).get(ESPNViewModel::class.java)
-        espnAdapter = ESPNAdapter(recyclerView.context)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = espnAdapter
-        return view
-
-//        viewModel.loadNews(viewLifecycleOwner, Observer { result ->
-//            when (result) {
-//                is UseCaseResult.Success<*> -> {
-//                    pb.visibility = View.GONE
-//                    result.data as List<Deferred<SportNewsResponse>>
-//
-//                    espnAdapter?.articleList
-//
-//                }
-//
-//                is Error -> {
-//                    showError.value = result.message
-//                    pb.visibility = View.GONE
-//
-//
-//                }
-//
-//
-//            }
-//        })
-//    }
-//
-
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_espn,container,false)
+        binding.lifecycleOwner = this
+        espnAdapter = ESPNAdapter()
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViewModel()
+    }
+
+    private fun initViewModel() {
+        viewModel.sportList.observe(this, Observer { newList ->
+            espnAdapter.updateData(newList)
+            binding.recyclerView.adapter = espnAdapter
+            espnAdapter.notifyDataSetChanged()
+        })
+
+        viewModel.showLoading.observe(this, Observer { showLoading ->
+            pb.visibility = if (showLoading) View.VISIBLE else View.GONE
+        })
+
+        viewModel.showError.observe(this, Observer { showError ->
+            (showError)
+        })
+
+        viewModel.loadNews()
+    }
 }

@@ -1,9 +1,23 @@
 package yodgorbek.komilov.musobaqayangiliklari.database
 
-import androidx.room.Dao
+import androidx.lifecycle.LiveData
+import androidx.room.*
+
+import yodgorbek.komilov.musobaqayangiliklari.model.Article
+
+interface SportNewsDao {
+
+    @Query("SELECT * FROM  article")
+    fun getAllData(): LiveData<List<Article>>
+
+    @Insert
+    suspend fun addAll(article: List<Article>)
 
 
-@Dao
-abstract class SportNewsDao {
+    @Update
+    suspend fun updateArticle(article: Article)
+
+    @Delete
+    suspend fun deleteArticle(article: Article)
 
 }
