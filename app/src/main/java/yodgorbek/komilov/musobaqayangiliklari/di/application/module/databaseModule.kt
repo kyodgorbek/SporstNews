@@ -11,7 +11,6 @@ import yodgorbek.komilov.musobaqayangiliklari.repository.NewsRepository
 
 
 val databaseModule = module {
-
     fun provideDatabase(application: Application): SportNewsDatabase {
         return Room.databaseBuilder(application, SportNewsDatabase::class.java, "sportNews.database")
             .fallbackToDestructiveMigration()

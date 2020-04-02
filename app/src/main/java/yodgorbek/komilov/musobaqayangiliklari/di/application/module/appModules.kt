@@ -12,7 +12,7 @@ import yodgorbek.komilov.musobaqayangiliklari.viewmodel.MainViewModel
 
 val appModules = module() {
     factory(named("appModules")) {
-        //NewsRepository.NewsRepositoryImpl(sportsNewsApi = get())
+        NewsRepository(sportNewsApi = get(), sportNewsDao = get())
     }
     // factory<NewsRepository> { (NewsRepositoryImpl(sportsNewsApi = get())) }
     // Specific viewModel pattern to tell Koin how to build MainViewModel
