@@ -32,7 +32,7 @@ class FootballItaliaFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_sport_bbc,container,false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_football_italia,container,false)
         binding.lifecycleOwner = this
         footballItaliaAdapter = FootballItaliaAdapter()
         return binding.root

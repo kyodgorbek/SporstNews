@@ -4,10 +4,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import yodgorbek.komilov.musobaqayangiliklari.database.SportNewsDao
 import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsInterface
-import yodgorbek.komilov.musobaqayangiliklari.model.Article
-
-
-import yodgorbek.komilov.musobaqayangiliklari.utils.UseCaseResult
 
 class NewsRepository(private val sportNewsApi: SportNewsInterface, private val sportNewsDao: SportNewsDao) {
 

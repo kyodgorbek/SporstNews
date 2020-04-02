@@ -6,8 +6,7 @@ import org.koin.android.ext.koin.androidApplication
 import org.koin.dsl.module
 import yodgorbek.komilov.musobaqayangiliklari.database.SportNewsDao
 import yodgorbek.komilov.musobaqayangiliklari.database.SportNewsDatabase
-import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsInterface
-import yodgorbek.komilov.musobaqayangiliklari.repository.NewsRepository
+
 
 
 val databaseModule = module {
