@@ -4,9 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import yodgorbek.komilov.musobaqayangiliklari.model.Article
 
 @Database(entities = [Article::class], version = 1, exportSchema = false)
+@TypeConverters(SourceTypeConverters::class)
 abstract class SportNewsDatabase : RoomDatabase() {
 
     abstract fun sportNewsDao(): SportNewsDao

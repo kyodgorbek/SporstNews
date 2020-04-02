@@ -8,7 +8,7 @@ import yodgorbek.komilov.musobaqayangiliklari.database.SportNewsDao
 import yodgorbek.komilov.musobaqayangiliklari.database.SportNewsDatabase
 import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsInterface
 import yodgorbek.komilov.musobaqayangiliklari.repository.NewsRepository
-import yodgorbek.komilov.musobaqayangiliklari.repository.NewsRepositoryImpl
+
 
 val databaseModule = module {
 

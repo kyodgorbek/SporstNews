@@ -4,7 +4,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import yodgorbek.komilov.musobaqayangiliklari.repository.ESPNRepositoryImpl
-import yodgorbek.komilov.musobaqayangiliklari.repository.NewsRepositoryImpl
+
 import yodgorbek.komilov.musobaqayangiliklari.viewmodel.ESPNViewModel
 import yodgorbek.komilov.musobaqayangiliklari.viewmodel.MainViewModel
 
