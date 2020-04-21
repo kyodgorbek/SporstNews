@@ -62,11 +62,10 @@ class TopHeadlinesFragment : Fragment() {
                 }
             }
 
-//        //viewModel.showError.observe(this, Observer { showError ->
-//            (showError)
-//        })
-
-            viewModel.loadNews()
+           /// ?????????? THIS WILL NOT BE CALLED HERE
+            // viewModel.loadNews()
         })
+
+        viewModel.loadNews()
     }
 }

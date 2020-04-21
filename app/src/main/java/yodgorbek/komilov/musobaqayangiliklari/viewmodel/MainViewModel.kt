@@ -32,15 +32,13 @@ class MainViewModel(val newsRepository: NewsRepository) : ViewModel(), Coroutine
 
 
     fun loadNews() {
-// Show progressBar during the operation on the MAIN (default) thread
+        // Show progressBar during the operation on the MAIN (default) thread
         _showLoading.value = true
-// launch the Coroutine
+        // launch the Coroutine
         launch {
             // Switching from MAIN to IO thread for API operation
-// Update our data list with the new one from API
-            val result = withContext(Dispatchers.IO) {
-                newsRepository.refresh()
-            }
+            // Update our data list with the new one from API
+            val result =  newsRepository.refresh()
             _sportList.value = result
             _showLoading.value = false
         }

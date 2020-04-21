@@ -15,12 +15,3 @@ val appModules = module {
     // Specific viewModel pattern to tell Koin how to build MainViewModel
     viewModel { MainViewModel(newsRepository = get()) }
 }
-
-
-
-
-
-
-
-
-
