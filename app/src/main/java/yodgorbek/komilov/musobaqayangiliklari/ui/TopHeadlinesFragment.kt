@@ -10,11 +10,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 
-import kotlinx.android.synthetic.main.fragment_top_headlines.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import yodgorbek.komilov.musobaqayangiliklari.R
 import yodgorbek.komilov.musobaqayangiliklari.adapter.TopHeadlinesAdapter
 import yodgorbek.komilov.musobaqayangiliklari.databinding.FragmentTopHeadlinesBinding
+import yodgorbek.komilov.musobaqayangiliklari.utils.Results
 
 import yodgorbek.komilov.musobaqayangiliklari.viewmodel.MainViewModel
 
@@ -46,20 +46,27 @@ class TopHeadlinesFragment : Fragment() {
     }
 
     private fun initViewModel() {
-        viewModel.sportList.observe(this, Observer { newList ->
-            topHeadlinesAdapter.updateData(newList)
-            binding.recyclerView.adapter = topHeadlinesAdapter
-            topHeadlinesAdapter.notifyDataSetChanged()
-        })
+        viewModel.sportList.observe(this, Observer { result ->
 
-        viewModel.showLoading.observe(this, Observer { showLoading ->
-            pb.visibility = if (showLoading) View.VISIBLE else View.GONE
-        })
+            when(result) {
+                is Results.Success -> {
+                    val newList = result.data
+                    if (newList != null) {
+                        topHeadlinesAdapter.updateData(newList)
+                    }
+                    binding.recyclerView.adapter = topHeadlinesAdapter
+                    topHeadlinesAdapter.notifyDataSetChanged()
+                }
+                is Results.Failure -> {
+//Show your error here
+                }
+            }
 
-        viewModel.showError.observe(this, Observer { showError ->
-            (showError)
-        })
+//        //viewModel.showError.observe(this, Observer { showError ->
+//            (showError)
+//        })
 
         viewModel.loadNews()
+    })
     }
 }

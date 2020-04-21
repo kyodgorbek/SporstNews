@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import yodgorbek.komilov.musobaqayangiliklari.model.Article
 
-@Database(entities = [Article::class], version = 1, exportSchema = false)
+@Database( version = 1, entities = [Article::class])
 @TypeConverters(SourceTypeConverters::class)
 abstract class SportNewsDatabase : RoomDatabase() {
 

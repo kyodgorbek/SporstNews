@@ -1,5 +1,6 @@
 package yodgorbek.komilov.musobaqayangiliklari.database
 
+import android.util.Log
 import androidx.room.TypeConverter
 import org.json.JSONObject
 import yodgorbek.komilov.musobaqayangiliklari.model.Source
@@ -16,6 +17,10 @@ class SourceTypeConverters {
     @TypeConverter
     fun toSource(source: String): Source {
         val json = JSONObject(source)
-        return Source(json.get("id"), json.getString("name"))
+        Log.e("test", source)
+
+        return Source(json.get("id"),
+
+            json.getString("name"))
     }
 }

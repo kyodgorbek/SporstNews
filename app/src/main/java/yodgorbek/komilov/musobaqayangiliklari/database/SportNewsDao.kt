@@ -9,7 +9,7 @@ import yodgorbek.komilov.musobaqayangiliklari.model.Article
 interface SportNewsDao {
 
     @Query("SELECT * FROM  Article")
-    fun getAllData(): LiveData<List<Article>>
+    fun getAllData(): List<Article>
 
     @Insert
     suspend fun addAll(article: List<Article>)

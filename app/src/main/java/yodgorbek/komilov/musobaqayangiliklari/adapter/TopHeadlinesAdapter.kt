@@ -15,7 +15,6 @@ import yodgorbek.komilov.musobaqayangiliklari.model.Article
 import yodgorbek.komilov.musobaqayangiliklari.ui.detail.DetailActivity
 
 
-
 class TopHeadlinesAdapter(
 
 
