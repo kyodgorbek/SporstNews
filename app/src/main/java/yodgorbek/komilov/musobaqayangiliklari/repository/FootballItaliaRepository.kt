@@ -11,7 +11,8 @@ interface FootballItaliaRepository {
 
 
 @Suppress("UNCHECKED_CAST")
-class FootballItaliaRepositoryImpl(private val getFootballItaliaApi: SportNewsInterface) : FootballItaliaRepository {
+class FootballItaliaRepositoryImpl(private val getFootballItaliaApi: SportNewsInterface) :
+    FootballItaliaRepository {
     override suspend fun getFootballItaliaList(): UseCaseResult<List<Article>> {
 
         return try {

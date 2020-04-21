@@ -16,10 +16,7 @@ import yodgorbek.komilov.musobaqayangiliklari.model.Article
 import yodgorbek.komilov.musobaqayangiliklari.ui.detail.DetailActivity
 
 
-class ESPNAdapter(
-
-
-) :
+class ESPNAdapter :
     RecyclerView.Adapter<ESPNAdapter.MyViewHolder>() {
 
 
@@ -62,13 +59,7 @@ class ESPNAdapter(
         }
 
 
-
     }
-
-
-
-
-
 
 
     inner class MyViewHolder(private var binding: EspnListBinding) :

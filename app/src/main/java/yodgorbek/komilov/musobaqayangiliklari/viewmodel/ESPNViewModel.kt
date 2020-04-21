@@ -1,15 +1,10 @@
 package yodgorbek.komilov.musobaqayangiliklari.viewmodel
 
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.*
 import yodgorbek.komilov.musobaqayangiliklari.SingleLiveEvent
-import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsInterface
-import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsResponse
 import yodgorbek.komilov.musobaqayangiliklari.model.Article
-import yodgorbek.komilov.musobaqayangiliklari.repository.BBCRepository
 import yodgorbek.komilov.musobaqayangiliklari.repository.ESPNRepository
 import yodgorbek.komilov.musobaqayangiliklari.utils.UseCaseResult
 import kotlin.coroutines.CoroutineContext
@@ -17,6 +12,7 @@ import kotlin.coroutines.CoroutineContext
 class ESPNViewModel(val espnRepository: ESPNRepository) : ViewModel(), CoroutineScope {
     // Coroutine's background job
     val job = Job()
+
     // Define default thread for Coroutine as Main and add job
     override val coroutineContext: CoroutineContext = Dispatchers.Main + job
 
@@ -32,7 +28,7 @@ class ESPNViewModel(val espnRepository: ESPNRepository) : ViewModel(), Coroutine
             // Switching from MAIN to IO thread for API operation
             // Update our data list with the new one from API
             val result = withContext(Dispatchers.IO) {
-                espnRepository?.getESPNList()
+                espnRepository.getESPNList()
             }
             // Hide progressBar once the operation is done on the MAIN (default) thread
             showLoading.value = false

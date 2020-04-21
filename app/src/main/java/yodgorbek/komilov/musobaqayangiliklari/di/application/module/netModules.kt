@@ -15,8 +15,6 @@ const val BASE_URL = "https://newsapi.org/"
 val netModule = module {
 
 
-
-
     single {
         createWebService<SportNewsInterface>(
             okHttpClient = createHttpClient(),

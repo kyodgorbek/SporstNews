@@ -13,12 +13,11 @@ import yodgorbek.komilov.musobaqayangiliklari.utils.Results
 import kotlin.coroutines.CoroutineContext
 
 
-
-
 @Suppress("UNCHECKED_CAST")
 class MainViewModel(val newsRepository: NewsRepository) : ViewModel(), CoroutineScope {
     // Coroutine's background job
     val job = Job()
+
     // Define default thread for Coroutine as Main and add job
     override val coroutineContext: CoroutineContext = Dispatchers.Main + job
 

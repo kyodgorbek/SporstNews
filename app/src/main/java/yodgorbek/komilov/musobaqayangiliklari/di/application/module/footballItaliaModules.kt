@@ -7,7 +7,7 @@ import yodgorbek.komilov.musobaqayangiliklari.repository.FootballItaliaRepositor
 
 import yodgorbek.komilov.musobaqayangiliklari.viewmodel.FootballItaliaViewModel
 
-val footballItaliaModules = module() {
+val footballItaliaModules = module {
     factory(named("footballItaliaModules")) { (FootballItaliaRepositoryImpl(getFootballItaliaApi = get())) }
     // Tells Koin how to create an instance of FootballItaliaRepository
     viewModel { FootballItaliaViewModel(footballItaliaRepository = get(named("footballItaliaModules"))) }

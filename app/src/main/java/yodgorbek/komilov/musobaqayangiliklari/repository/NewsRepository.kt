@@ -7,11 +7,13 @@ import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsInterface
 
 import yodgorbek.komilov.musobaqayangiliklari.utils.Results
 
-class NewsRepository(private val sportNewsApi: SportNewsInterface, private val sportNewsDao: SportNewsDao) {
+class NewsRepository(
+    private val sportNewsApi: SportNewsInterface,
+    private val sportNewsDao: SportNewsDao
+) {
 
 
-
-        val data = sportNewsDao.getAllData()
+    val data = sportNewsDao.getAllData()
 
     suspend fun refresh() = withContext(Dispatchers.IO) {
         val articles = sportNewsApi.getNewsAsync().body()?.articles

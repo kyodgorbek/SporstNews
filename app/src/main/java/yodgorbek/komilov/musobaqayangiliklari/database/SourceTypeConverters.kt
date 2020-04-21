@@ -19,8 +19,10 @@ class SourceTypeConverters {
         val json = JSONObject(source)
         Log.e("test", source)
 
-        return Source(json.get("id"),
+        return Source(
+            json.get("id"),
 
-            json.getString("name"))
+            json.getString("name")
+        )
     }
 }

@@ -1,8 +1,6 @@
 package yodgorbek.komilov.musobaqayangiliklari.repository
 
-import kotlinx.coroutines.Deferred
 import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsInterface
-import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsResponse
 import yodgorbek.komilov.musobaqayangiliklari.model.Article
 import yodgorbek.komilov.musobaqayangiliklari.utils.UseCaseResult
 

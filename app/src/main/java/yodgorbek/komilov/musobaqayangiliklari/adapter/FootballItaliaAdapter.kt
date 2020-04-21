@@ -1,25 +1,17 @@
 package yodgorbek.komilov.musobaqayangiliklari.adapter
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import yodgorbek.komilov.musobaqayangiliklari.databinding.FootballItaliaListBinding
 import yodgorbek.komilov.musobaqayangiliklari.model.Article
 import yodgorbek.komilov.musobaqayangiliklari.ui.detail.DetailActivity
 
-class FootballItaliaAdapter(
-
-
-) :
+class FootballItaliaAdapter :
     RecyclerView.Adapter<FootballItaliaAdapter.MyViewHolder>() {
 
 
@@ -39,7 +31,8 @@ class FootballItaliaAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
             MyViewHolder {
-        binding = FootballItaliaListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding =
+            FootballItaliaListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return MyViewHolder(binding)
     }
@@ -62,13 +55,7 @@ class FootballItaliaAdapter(
         }
 
 
-
     }
-
-
-
-
-
 
 
     inner class MyViewHolder(private var binding: FootballItaliaListBinding) :

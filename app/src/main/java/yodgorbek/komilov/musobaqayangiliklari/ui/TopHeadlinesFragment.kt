@@ -27,14 +27,14 @@ class TopHeadlinesFragment : Fragment() {
     // private val newsRepository: NewsRepository by inject()
 
 
-
     //3
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_top_headlines,container,false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_top_headlines, container, false)
         binding.lifecycleOwner = this
         topHeadlinesAdapter = TopHeadlinesAdapter()
         return binding.root
@@ -48,7 +48,7 @@ class TopHeadlinesFragment : Fragment() {
     private fun initViewModel() {
         viewModel.sportList.observe(this, Observer { result ->
 
-            when(result) {
+            when (result) {
                 is Results.Success -> {
                     val newList = result.data
                     if (newList != null) {
@@ -66,7 +66,7 @@ class TopHeadlinesFragment : Fragment() {
 //            (showError)
 //        })
 
-        viewModel.loadNews()
-    })
+            viewModel.loadNews()
+        })
     }
 }

@@ -7,7 +7,10 @@ import yodgorbek.komilov.musobaqayangiliklari.repository.NewsRepository
 
 
 val repositoryModule = module {
-    fun provideUserRepository(sportsNewsApi: SportNewsInterface, sportNewsDao: SportNewsDao): NewsRepository {
+    fun provideUserRepository(
+        sportsNewsApi: SportNewsInterface,
+        sportNewsDao: SportNewsDao
+    ): NewsRepository {
         return NewsRepository(sportsNewsApi, sportNewsDao)
     }
 

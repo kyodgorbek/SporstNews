@@ -25,16 +25,14 @@ class FootballItaliaFragment : Fragment() {
     private lateinit var footballItaliaAdapter: FootballItaliaAdapter
 
 
-
-
-
     //3
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_football_italia,container,false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_football_italia, container, false)
         binding.lifecycleOwner = this
         footballItaliaAdapter = FootballItaliaAdapter()
 

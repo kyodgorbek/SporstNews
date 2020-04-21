@@ -1,8 +1,6 @@
 package yodgorbek.komilov.musobaqayangiliklari.database
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
-
 import yodgorbek.komilov.musobaqayangiliklari.model.Article
 
 @Dao

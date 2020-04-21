@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import yodgorbek.komilov.musobaqayangiliklari.model.Article
 
-@Database( version = 1, entities = [Article::class])
+@Database(version = 1, entities = [Article::class])
 @TypeConverters(SourceTypeConverters::class)
 abstract class SportNewsDatabase : RoomDatabase() {
 
@@ -15,10 +15,14 @@ abstract class SportNewsDatabase : RoomDatabase() {
 
     companion object {
         private var instance: SportNewsDatabase? = null
-        fun getInstance( context: Context): SportNewsDatabase? {
+        fun getInstance(context: Context): SportNewsDatabase? {
             if (instance == null) {
                 synchronized(SportNewsDatabase::class.java) {
-                    instance = Room.databaseBuilder(context.applicationContext, SportNewsDatabase::class.java, "article_database")
+                    instance = Room.databaseBuilder(
+                        context.applicationContext,
+                        SportNewsDatabase::class.java,
+                        "article_database"
+                    )
                         .fallbackToDestructiveMigration()
                         .build()
                 }

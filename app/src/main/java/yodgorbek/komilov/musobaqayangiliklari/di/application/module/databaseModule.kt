@@ -8,10 +8,13 @@ import yodgorbek.komilov.musobaqayangiliklari.database.SportNewsDao
 import yodgorbek.komilov.musobaqayangiliklari.database.SportNewsDatabase
 
 
-
 val databaseModule = module {
     fun provideDatabase(application: Application): SportNewsDatabase {
-        return Room.databaseBuilder(application, SportNewsDatabase::class.java, "sportNews.database")
+        return Room.databaseBuilder(
+            application,
+            SportNewsDatabase::class.java,
+            "sportNews.database"
+        )
             .fallbackToDestructiveMigration()
             .allowMainThreadQueries()
             .build()

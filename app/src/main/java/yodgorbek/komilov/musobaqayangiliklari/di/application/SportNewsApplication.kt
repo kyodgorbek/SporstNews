@@ -13,7 +13,17 @@ class SportNewsApplication : Application() {
         // Adding Koin modules to our application
         startKoin {
             androidContext(this@SportNewsApplication)
-            modules(listOf(netModule, appModules, bbcModules, espnModules, footballItaliaModules, databaseModule, repositoryModule))
+            modules(
+                listOf(
+                    netModule,
+                    appModules,
+                    bbcModules,
+                    espnModules,
+                    footballItaliaModules,
+                    databaseModule,
+                    repositoryModule
+                )
+            )
         }
 
     }

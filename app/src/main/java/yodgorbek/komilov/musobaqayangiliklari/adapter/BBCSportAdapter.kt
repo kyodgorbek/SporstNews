@@ -1,7 +1,6 @@
 package yodgorbek.komilov.musobaqayangiliklari.adapter
 
 
-
 import android.content.Intent
 import android.os.Build
 import android.util.Log
@@ -15,11 +14,7 @@ import yodgorbek.komilov.musobaqayangiliklari.model.Article
 import yodgorbek.komilov.musobaqayangiliklari.ui.detail.DetailActivity
 
 
-
-class BBCSportAdapter(
-
-
-) :
+class BBCSportAdapter :
     RecyclerView.Adapter<BBCSportAdapter.MyViewHolder>() {
 
 
@@ -62,13 +57,7 @@ class BBCSportAdapter(
         }
 
 
-
     }
-
-
-
-
-
 
 
     inner class MyViewHolder(private var binding: BbcSportItemBinding) :
