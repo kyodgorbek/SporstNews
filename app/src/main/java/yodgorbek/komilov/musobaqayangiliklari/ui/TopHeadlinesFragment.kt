@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import kotlinx.android.synthetic.main.fragment_top_headlines.*
+
 
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import yodgorbek.komilov.musobaqayangiliklari.R
@@ -56,16 +58,21 @@ class TopHeadlinesFragment : Fragment() {
                     }
                     binding.recyclerView.adapter = topHeadlinesAdapter
                     topHeadlinesAdapter.notifyDataSetChanged()
+
+                    viewModel.showLoading.observe(this, Observer {showLoading ->
+                        pb.visibility = if (showLoading) View.VISIBLE else View.GONE
+                    })
                 }
                 is Results.Failure -> {
-//Show your error here
-                }
+                    viewModel.showLoading.observe(this, Observer {showLoading ->
+                        pb.visibility = if (showLoading) View.INVISIBLE else View.GONE
+                })
             }
 
-           /// ?????????? THIS WILL NOT BE CALLED HERE
-            // viewModel.loadNews()
-        })
+
+        }
 
         viewModel.loadNews()
+    })
     }
 }
