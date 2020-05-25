@@ -43,7 +43,8 @@ class MainActivity : AppCompatActivity() {
         val footballItaliaTransaction = supportFragmentManager.beginTransaction()
         footballItaliaTransaction.replace(R.id.frame_layout, selectedFragment)
         footballItaliaTransaction.commit()
-
+        bottomNavigationView.setBackgroundColor(
+            resources.getColor(R.color.colorPrimary))
         bottomNavigationView.setOnNavigationItemSelectedListener {
 
             when (it.itemId) {
@@ -53,7 +54,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.bbc_sport -> selectedFragment = BBCSportFragment()
                 R.id.football_italia -> selectedFragment = FootballItaliaFragment()
             }
-            val transaction = supportFragmentManager.beginTransaction()
+
+                val transaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.frame_layout, selectedFragment)
             transaction.commit()
             return@setOnNavigationItemSelectedListener true

@@ -55,7 +55,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_toEndOf="@id/imageView"
                 android:layout_toRightOf="@id/imageView"
-                android:src="@drawable/ic_espn"
+                android:src="@drawable/bbc_news"
                 tools:background="@color/colorPrimary" />
 
             <TextView
