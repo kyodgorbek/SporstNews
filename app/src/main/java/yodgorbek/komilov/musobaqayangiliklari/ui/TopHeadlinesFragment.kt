@@ -48,7 +48,7 @@ class TopHeadlinesFragment : Fragment() {
     }
 
     private fun initViewModel() {
-        viewModel.sportList.observe(this, Observer { result ->
+        viewModel.sportList.observe(viewLifecycleOwner, Observer { result ->
 
             when (result) {
                 is Results.Success -> {
@@ -59,12 +59,12 @@ class TopHeadlinesFragment : Fragment() {
                     binding.recyclerView.adapter = topHeadlinesAdapter
                     topHeadlinesAdapter.notifyDataSetChanged()
 
-                    viewModel.showLoading.observe(this, Observer {showLoading ->
+                    viewModel.showLoading.observe(viewLifecycleOwner, Observer {showLoading ->
                         pb.visibility = if (showLoading) View.VISIBLE else View.GONE
                     })
                 }
                 is Results.Failure -> {
-                    viewModel.showLoading.observe(this, Observer {showLoading ->
+                    viewModel.showLoading.observe(viewLifecycleOwner, Observer {showLoading ->
                         pb.visibility = if (showLoading) View.INVISIBLE else View.GONE
                 })
             }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "653665803745",
+    "firebase_url": "https://newsapp-c8a01.firebaseio.com",
+    "project_id": "newsapp-c8a01",
+    "storage_bucket": "newsapp-c8a01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:653665803745:android:f017226f2225c53cf9c6a0",
+        "android_client_info": {
+          "package_name": "yodgorbek.komilov.musobaqayangiliklari"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "653665803745-vl3rhprclucl7dtloi4ofeunoen88lif.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8YleYMnY-SbQr8sl2Za-dVrmFxSYpF8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "653665803745-vl3rhprclucl7dtloi4ofeunoen88lif.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

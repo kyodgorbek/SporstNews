@@ -30,8 +30,8 @@ class WelcomeActivity : AppIntro() {
         addSlide(
             AppIntroFragment.newInstance(
                 title = "Welcome to the NewsApp",
-                description = "NewsApp give your information about life news around the world",
-                imageDrawable = R.drawable.news,
+                description = "NewsApp give  news information about around the world",
+                imageDrawable = R.drawable.news_slider,
                 titleColor = Color.WHITE,
                 descriptionColor = Color.WHITE,
                 backgroundColor = Color.BLUE,
@@ -43,8 +43,8 @@ class WelcomeActivity : AppIntro() {
         addSlide(
             AppIntroFragment.newInstance(
                 title = "Welcome to the NewsApp",
-                description = "NewsApp give your information about life news around the world",
-                imageDrawable = R.drawable.news,
+                description = "NewsApp give live updated news and you will never miss your favorite news ",
+                imageDrawable = R.drawable.news_sliders,
                 titleColor = Color.WHITE,
                 descriptionColor = Color.WHITE,
                 backgroundColor = Color.GREEN,
@@ -55,8 +55,8 @@ class WelcomeActivity : AppIntro() {
         addSlide(
             AppIntroFragment.newInstance(
                 title = "NewsApp",
-                description = "NewsApp give your information about life news around the world",
-                imageDrawable = R.drawable.news,
+                description = "Read News analysis  and features",
+                imageDrawable = R.drawable.sports_news,
                 titleColor = Color.YELLOW,
                 descriptionColor = Color.RED,
                 backgroundColor = Color.YELLOW,
@@ -68,7 +68,7 @@ class WelcomeActivity : AppIntro() {
         addSlide(
             AppIntroFragment.newInstance(
                 title = "NewsApp",
-                description = "NewsApp give your information about life news around the world",
+                description = "Follow the best news around the world",
                 imageDrawable = R.drawable.news,
                 titleColor = Color.WHITE,
                 descriptionColor = Color.WHITE,
