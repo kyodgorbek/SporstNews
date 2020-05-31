@@ -29,20 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         selectedFragment = BBCSportFragment()
 
-        val bbcTransaction = supportFragmentManager.beginTransaction()
-        bbcTransaction.replace(R.id.frame_layout, selectedFragment)
-        bbcTransaction.commit()
 
-        selectedFragment = ESPNFragment()
-
-        val espnTransaction = supportFragmentManager.beginTransaction()
-        espnTransaction.replace(R.id.frame_layout, selectedFragment)
-        espnTransaction.commit()
-
-        selectedFragment = FootballItaliaFragment()
-        val footballItaliaTransaction = supportFragmentManager.beginTransaction()
-        footballItaliaTransaction.replace(R.id.frame_layout, selectedFragment)
-        footballItaliaTransaction.commit()
         bottomNavigationView.setBackgroundColor(
             resources.getColor(R.color.colorPrimary))
         bottomNavigationView.setOnNavigationItemSelectedListener {

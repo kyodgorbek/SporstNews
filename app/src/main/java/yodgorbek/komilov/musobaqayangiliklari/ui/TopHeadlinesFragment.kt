@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+
 import kotlinx.android.synthetic.main.fragment_top_headlines.*
 
 
@@ -25,6 +26,8 @@ class TopHeadlinesFragment : Fragment() {
 
     private lateinit var binding: FragmentTopHeadlinesBinding
     private val viewModel by viewModel<MainViewModel>()
+
+
     private lateinit var topHeadlinesAdapter: TopHeadlinesAdapter
     // private val newsRepository: NewsRepository by inject()
 
@@ -45,10 +48,13 @@ class TopHeadlinesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViewModel()
+      //  loadingAds()
+
+
     }
 
     private fun initViewModel() {
-        viewModel.sportList.observe(viewLifecycleOwner, Observer { result ->
+        viewModel.sportList.observe(this, Observer { result ->
 
             when (result) {
                 is Results.Success -> {
@@ -59,12 +65,12 @@ class TopHeadlinesFragment : Fragment() {
                     binding.recyclerView.adapter = topHeadlinesAdapter
                     topHeadlinesAdapter.notifyDataSetChanged()
 
-                    viewModel.showLoading.observe(viewLifecycleOwner, Observer {showLoading ->
+                    viewModel.showLoading.observe(this, Observer {showLoading ->
                         pb.visibility = if (showLoading) View.VISIBLE else View.GONE
                     })
                 }
                 is Results.Failure -> {
-                    viewModel.showLoading.observe(viewLifecycleOwner, Observer {showLoading ->
+                    viewModel.showLoading.observe(this, Observer {showLoading ->
                         pb.visibility = if (showLoading) View.INVISIBLE else View.GONE
                 })
             }
@@ -74,5 +80,11 @@ class TopHeadlinesFragment : Fragment() {
 
         viewModel.loadNews()
     })
+
+
+
     }
-}
+
+
+    }
+

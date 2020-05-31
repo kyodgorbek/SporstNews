@@ -46,16 +46,14 @@ class TopHeadlinesAdapter :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.setData(articleList[position])
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            binding.root.setOnClickListener { v ->
-                val intent = Intent(v.context, DetailActivity::class.java)
-                intent.putExtra(urlKey, articleList[position].url)
+        binding.root.setOnClickListener { v ->
 
-                v.context.startActivity(intent)
-            }
+
+            val intent = Intent(v.context, DetailActivity::class.java)
+            intent.putExtra(urlKey, articleList[position].url)
+
+            v.context.startActivity(intent)
         }
-
-
     }
 
 
@@ -72,8 +70,10 @@ class TopHeadlinesAdapter :
         }
 
     }
-
-
 }
+
+
+
+
 
 

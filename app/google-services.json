@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "653665803745",
-    "firebase_url": "https://newsapp-c8a01.firebaseio.com",
-    "project_id": "newsapp-c8a01",
-    "storage_bucket": "newsapp-c8a01.appspot.com"
+    "project_number": "783774502072",
+    "firebase_url": "https://newsapp-66d2e.firebaseio.com",
+    "project_id": "newsapp-66d2e",
+    "storage_bucket": "newsapp-66d2e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:653665803745:android:f017226f2225c53cf9c6a0",
+        "mobilesdk_app_id": "1:783774502072:android:8835ccf17620237e07f84d",
         "android_client_info": {
           "package_name": "yodgorbek.komilov.musobaqayangiliklari"
         }
       },
       "oauth_client": [
         {
-          "client_id": "653665803745-vl3rhprclucl7dtloi4ofeunoen88lif.apps.googleusercontent.com",
+          "client_id": "783774502072-fec39agev33ntdp0n07np27o3s4pp2on.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD8YleYMnY-SbQr8sl2Za-dVrmFxSYpF8w"
+          "current_key": "AIzaSyCzkn3Ic0JL0d53OBzINPR4IbW2C4pbwwY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "653665803745-vl3rhprclucl7dtloi4ofeunoen88lif.apps.googleusercontent.com",
+              "client_id": "783774502072-fec39agev33ntdp0n07np27o3s4pp2on.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

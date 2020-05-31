@@ -7,6 +7,8 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import com.github.appintro.AppIntro
 import com.github.appintro.AppIntroFragment
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import yodgorbek.komilov.musobaqayangiliklari.MainActivity
 import yodgorbek.komilov.musobaqayangiliklari.R
 
@@ -18,7 +20,6 @@ class WelcomeActivity : AppIntro() {
         super.onCreate(savedInstanceState)
 
         showIntroSlides()
-//
     }
 
     // Call addSlide passing your Fragments.
