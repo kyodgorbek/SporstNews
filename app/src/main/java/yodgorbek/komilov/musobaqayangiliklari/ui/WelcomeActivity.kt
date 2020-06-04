@@ -7,8 +7,7 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import com.github.appintro.AppIntro
 import com.github.appintro.AppIntroFragment
-import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.crashlytics.FirebaseCrashlytics
+
 import yodgorbek.komilov.musobaqayangiliklari.MainActivity
 import yodgorbek.komilov.musobaqayangiliklari.R
 
@@ -30,8 +29,8 @@ class WelcomeActivity : AppIntro() {
 
         addSlide(
             AppIntroFragment.newInstance(
-                title = "Welcome to the NewsApp",
-                description = "NewsApp give  news information about around the world",
+                title = "Welcome to the Sport News",
+                description = "Sport News give  news information about around the world",
                 imageDrawable = R.drawable.news_slider,
                 titleColor = Color.WHITE,
                 descriptionColor = Color.WHITE,
@@ -43,8 +42,8 @@ class WelcomeActivity : AppIntro() {
 
         addSlide(
             AppIntroFragment.newInstance(
-                title = "Welcome to the NewsApp",
-                description = "NewsApp give live updated news and you will never miss your favorite news ",
+                title = "Sport News",
+                description = "Sport News give live updated news and you will never miss your favorite news ",
                 imageDrawable = R.drawable.news_sliders,
                 titleColor = Color.WHITE,
                 descriptionColor = Color.WHITE,
@@ -55,10 +54,10 @@ class WelcomeActivity : AppIntro() {
         )
         addSlide(
             AppIntroFragment.newInstance(
-                title = "NewsApp",
-                description = "Read News analysis  and features",
+                title = "Sport News",
+                description = "Live Updates Sport and Opinion",
                 imageDrawable = R.drawable.sports_news,
-                titleColor = Color.YELLOW,
+                titleColor = Color.WHITE,
                 descriptionColor = Color.RED,
                 backgroundColor = Color.YELLOW,
                 titleTypefaceFontRes = R.font.opensans_light,
@@ -68,8 +67,8 @@ class WelcomeActivity : AppIntro() {
 
         addSlide(
             AppIntroFragment.newInstance(
-                title = "NewsApp",
-                description = "Follow the best news around the world",
+                title = "Sport News",
+                description = "The News That Matters from Trusted Sources",
                 imageDrawable = R.drawable.news,
                 titleColor = Color.WHITE,
                 descriptionColor = Color.WHITE,
