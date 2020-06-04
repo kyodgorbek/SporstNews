@@ -10,7 +10,6 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import yodgorbek.komilov.musobaqayangiliklari.internet.SportNewsInterface
 import java.util.concurrent.TimeUnit
-
 const val BASE_URL = "https://newsapi.org/"
 val netModule = module {
 

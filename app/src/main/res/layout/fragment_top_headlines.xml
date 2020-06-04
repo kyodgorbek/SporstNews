@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:ads="http://schemas.android.com/tools">
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -31,17 +35,9 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-<!--        <com.google.android.gms.ads.AdView-->
-<!--            android:id="@+id/adView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            android:layout_centerHorizontal="true"-->
-<!--            ads:adSize="BANNER"-->
-<!--            ads:adUnitId="ca-app-pub-3940256099942544/6300978111"-->
-<!--            ads:layout_constraintTop_toBottomOf="@+id/pb"-->
-<!--            ads:layout_constraintBottom_toBottomOf="@+id/pb"/>-->
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
