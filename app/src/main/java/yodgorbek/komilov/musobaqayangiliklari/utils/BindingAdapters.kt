@@ -14,7 +14,7 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 @BindingAdapter("bind:image_url")
-fun loadImage(imageView: ImageView, image_url: String) {
+fun loadImage(imageView: ImageView?, image_url: String?) {
     Picasso.get().load(image_url).fit()
         .placeholder(R.mipmap.ic_launcher)
         .error(R.mipmap.ic_launcher)

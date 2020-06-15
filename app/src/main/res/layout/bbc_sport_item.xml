@@ -55,7 +55,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_toEndOf="@id/imageView"
                 android:layout_toRightOf="@id/imageView"
-                android:src="@drawable/bbc_news"
+                android:src="@drawable/top_headlines"
                 tools:background="@color/colorPrimary" />
 
             <TextView
@@ -64,27 +64,30 @@
                 android:layout_height="32dp"
                 android:layout_below="@id/articleTitle"
                 android:layout_marginStart="16dp"
+                android:layout_toStartOf="@+id/articleTime"
                 android:layout_marginLeft="16dp"
                 android:layout_toEndOf="@id/imageCategory"
                 android:layout_toRightOf="@id/imageCategory"
                 android:gravity="center|start"
-                android:text="@{article.source.name}" />
+                android:text="@{article.source.name}"
+                android:layout_toLeftOf="@+id/articleTime" />
 
             <TextView
                 android:id="@+id/articleTime"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
+                android:maxLines="20"
                 android:layout_below="@id/articleTitle"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_toEndOf="@id/articleSourceName"
-                android:layout_toRightOf="@id/articleSourceName"
                 android:gravity="center|start"
                 android:textColor="@android:color/darker_gray"
                 app:updatedTime="@{article.publishedAt}"
-                tools:ignore="NotSibling" />
+                tools:ignore="NotSibling"
+                android:text="2 hours ago"
+                />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

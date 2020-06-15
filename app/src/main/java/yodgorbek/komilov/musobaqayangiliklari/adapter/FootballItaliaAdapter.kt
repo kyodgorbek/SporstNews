@@ -45,19 +45,16 @@ class FootballItaliaAdapter :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.setData(articleList[position])
 
+        binding.root.setOnClickListener { v ->
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            binding.root.setOnClickListener { v ->
-                val intent = Intent(v.context, DetailActivity::class.java)
-                intent.putExtra(
-                    urlKey,
-                    articleList[articleList.size].url
-                ) // you can get ArrayIndexOutOfBoundsException
 
-                v.context.startActivity(intent)
-            }
+            val intent = Intent(v.context, DetailActivity::class.java)
+            intent.putExtra(urlKey, articleList[position].url)
+
+            v.context.startActivity(intent)
         }
-    }
+        }
+
 
     inner class MyViewHolder(private var binding: FootballItaliaListBinding) :
         RecyclerView.ViewHolder(binding.root) {

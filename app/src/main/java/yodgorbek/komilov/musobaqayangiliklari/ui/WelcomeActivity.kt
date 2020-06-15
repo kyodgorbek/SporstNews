@@ -29,8 +29,8 @@ class WelcomeActivity : AppIntro() {
 
         addSlide(
             AppIntroFragment.newInstance(
-                title = "Welcome to the Sport News",
-                description = "Sport News give  news information about around the world",
+                title = "Welcome to the ALL SPORT NEWS",
+                description = "All Sport News offers the latest sports news, live action, scores and highlights. It's the best way to follow all the latest sporting action",
                 imageDrawable = R.drawable.news_slider,
                 titleColor = Color.WHITE,
                 descriptionColor = Color.WHITE,
@@ -42,8 +42,8 @@ class WelcomeActivity : AppIntro() {
 
         addSlide(
             AppIntroFragment.newInstance(
-                title = "Sport News",
-                description = "Sport News give live updated news and you will never miss your favorite news ",
+                title = "ALL SPORT NEWS",
+                description = "All Sport News give live updated news and you will never miss your favorite news ",
                 imageDrawable = R.drawable.news_sliders,
                 titleColor = Color.WHITE,
                 descriptionColor = Color.WHITE,
@@ -54,11 +54,11 @@ class WelcomeActivity : AppIntro() {
         )
         addSlide(
             AppIntroFragment.newInstance(
-                title = "Sport News",
+                title = "All SPORT NEWS",
                 description = "Live Updates Sport and Opinion",
-                imageDrawable = R.drawable.sports_news,
+                imageDrawable = R.drawable.allsportnewsjon,
                 titleColor = Color.WHITE,
-                descriptionColor = Color.RED,
+                descriptionColor = Color.WHITE,
                 backgroundColor = Color.YELLOW,
                 titleTypefaceFontRes = R.font.opensans_light,
                 descriptionTypefaceFontRes = R.font.opensans_regular
@@ -67,7 +67,7 @@ class WelcomeActivity : AppIntro() {
 
         addSlide(
             AppIntroFragment.newInstance(
-                title = "Sport News",
+                title = "All SPORT NEWS",
                 description = "The News That Matters from Trusted Sources",
                 imageDrawable = R.drawable.news,
                 titleColor = Color.WHITE,

@@ -55,7 +55,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_toEndOf="@id/imageView"
                 android:layout_toRightOf="@id/imageView"
-                android:src="@drawable/football_italia"
+                android:src="@drawable/top_headlines"
                 tools:background="@color/colorPrimary" />
 
             <TextView
@@ -65,6 +65,8 @@
                 android:layout_below="@id/articleTitle"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
+                android:layout_toStartOf="@+id/articleTime"
+                android:layout_toLeftOf="@+id/articleTime"
                 android:layout_toEndOf="@id/imageCategory"
                 android:layout_toRightOf="@id/imageCategory"
                 android:gravity="center|start"
@@ -79,9 +81,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_toEndOf="@id/articleSourceName"
-                android:layout_toRightOf="@id/articleSourceName"
                 android:gravity="center|start"
+                android:maxLines="20"
+                android:text="2 hours ago"
                 android:textColor="@android:color/darker_gray"
                 app:updatedTime="@{article.publishedAt}"
                 tools:ignore="NotSibling" />
