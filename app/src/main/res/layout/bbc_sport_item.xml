@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-
-        <variable
-            name="article"
-            type="yodgorbek.komilov.musobaqayangiliklari.model.Article">
-
-        </variable>
-    </data>
 
     <androidx.cardview.widget.CardView
+         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -30,7 +21,6 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:contentDescription="bbc"
-                app:image_url="@{article.urlToImage}"
                 tools:background="@color/colorPrimary" />
 
             <TextView
@@ -44,7 +34,7 @@
                 android:ellipsize="end"
                 android:lines="3"
                 android:maxLines="3"
-                android:text="@{article.title}" />
+                 />
 
             <ImageView
                 android:id="@+id/imageCategory"
@@ -69,7 +59,6 @@
                 android:layout_toEndOf="@id/imageCategory"
                 android:layout_toRightOf="@id/imageCategory"
                 android:gravity="center|start"
-                android:text="@{article.source.name}"
                 android:layout_toLeftOf="@+id/articleTime" />
 
             <TextView
@@ -84,11 +73,9 @@
                 android:layout_marginEnd="16dp"
                 android:gravity="center|start"
                 android:textColor="@android:color/darker_gray"
-                app:updatedTime="@{article.publishedAt}"
                 tools:ignore="NotSibling"
                 android:text="2 hours ago"
                 />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
-</layout>

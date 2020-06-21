@@ -4,21 +4,22 @@ package yodgorbek.komilov.musobaqayangiliklari.ui
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.inflate
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_sport_bbc.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import yodgorbek.komilov.musobaqayangiliklari.R
 import yodgorbek.komilov.musobaqayangiliklari.adapter.BBCSportAdapter
-import yodgorbek.komilov.musobaqayangiliklari.databinding.FragmentSportBbcBinding
+
 import yodgorbek.komilov.musobaqayangiliklari.viewmodel.BBCSportViewModel
 
 
 class BBCSportFragment : Fragment() {
 
-    private lateinit var binding: FragmentSportBbcBinding
+
     private val viewModel by viewModel<BBCSportViewModel>()
     private lateinit var bbcSportAdapter: BBCSportAdapter
 
@@ -29,10 +30,10 @@ class BBCSportFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sport_bbc, container, false)
-        binding.lifecycleOwner = this
+        var view =inflater.inflate( R.layout.fragment_sport_bbc, container, false)
+
         bbcSportAdapter = BBCSportAdapter()
-        return binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,7 +44,7 @@ class BBCSportFragment : Fragment() {
     private fun initViewModel() {
         viewModel.sportList.observe(this, Observer { newList ->
             bbcSportAdapter.updateData(newList)
-            binding.recyclerView.adapter = bbcSportAdapter
+            recyclerView.adapter = bbcSportAdapter
             bbcSportAdapter.notifyDataSetChanged()
         })
 

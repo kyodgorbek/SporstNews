@@ -22,6 +22,8 @@ fun loadImage(imageView: ImageView?, image_url: String?) {
 }
 
 
+
+
 fun getAppropriateTimeDiffResolution(
     start: Date?,
     end: Date?
